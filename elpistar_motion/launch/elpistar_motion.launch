@@ -1,0 +1,11 @@
+<launch>
+  <arg name="use_robot_name"         default="elpistar"/>
+  <arg name="device_name"            default="/dev/ttyUSB0"/>
+  <arg name="baud_rate"              default="1000000"/>
+  <arg name="protocol_version"       default="1.0"/>
+  <arg name="joint_info"             default="$(find elpistar_dynamixel)/config/elpistar_joint.yaml"/>
+  <arg name="joint_controller"       default="position_mode"/>
+  <param name="robot_name"           value="$(arg use_robot_name)"/>
+    
+  <node pkg="elpistar_motion" type="elpistar_motion_ctrl" name="elpistar_motion_controller" required="true" output="screen"/>
+</launch>

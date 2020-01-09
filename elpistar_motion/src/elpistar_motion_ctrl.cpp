@@ -1,0 +1,286 @@
+#include <elpistar_motion/elpistar_motion.h>
+
+ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
+     priv_node_handle_("~")
+{
+  robot_name_   = node_handle_.param<std::string>("robot_name", "elpistar");
+  initPublisher();
+ 
+  ROS_INFO("elpistar_motion_controller : Init OK!");
+}
+
+ElpistarMotionController::~ElpistarMotionController(){
+  stop();
+  ros::shutdown();
+}
+
+void ElpistarMotionController::initPublisher(){
+  goal_joint_states_pub_ = node_handle_.advertise<sensor_msgs::JointState>(robot_name_+"/goal_joint_position",10);
+}
+
+void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
+  sensor_msgs::JointState goal_pos;
+  
+  switch(type){
+      case WALK:
+      {
+        switch(pn){
+          case 0:
+          {
+            uint16_t gp[20]={169,722,279,744,462,561,358,666,513,522,297,665,246,769,621,348,513,522,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 1:
+          {  uint16_t gp[20]={166,719,279,744,462,561,358,666,518,527,303,656,248,761,625,348,518,527,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 2:
+          {
+            uint16_t gp[20]={167,720,279,744,462,561,358,666,519,533,309,655,252,761,628,346,523,532,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 3:
+          {
+            uint16_t gp[20]={171,724,279,744,462,561,358,666,513,541,316,667,257,778,629,341,527,537,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 4:
+          {
+            uint16_t gp[20]={179,732,279,744,462,561,358,666,504,550,322,687,262,801,630,338,530,541,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 5:
+          {
+            uint16_t gp[20]={189,742,279,744,462,561,358,666,496,556,327,709,266,820,631,342,532,543,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 6:
+          {
+            uint16_t gp[20]={201,754,279,744,462,561,358,666,493,558,330,729,267,827,633,354,533,544,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 7:
+          {
+            uint16_t gp[20]={215,768,279,744,462,561,358,666,496,556,332,741,266,820,636,374,532,543,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 8:
+          {
+            uint16_t gp[20]={230,783,279,744,462,561,358,666,504,550,333,745,262,801,641,396,530,541,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 9:
+          {
+            uint16_t gp[20]={246,799,279,744,462,561,358,666,513,541,334,742,257,778,647,416,527,537,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 10:
+          {
+            uint16_t gp[20]={260,813,279,744,462,561,358,666,519,533,335,737,252,761,654,428,523,532,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 11:
+          {
+            uint16_t gp[20]={274,827,279,744,462,561,358,666,518,527,338,735,248,761,660,427,518,527,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 12:
+          {
+            uint16_t gp[20]={285,838,279,744,462,561,358,666,513,522,342,735,246,769,666,418,513,522,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 13:
+          {
+            uint16_t gp[20]={294,847,279,744,462,561,358,666,507,516,349,731,248,775,671,409,507,516,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 14:
+          {
+            uint16_t gp[20]={300,853,279,744,462,561,358,666,501,510,358,726,254,777,675,402,501,510,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 15:
+          {
+            uint16_t gp[20]={303,856,279,744,462,561,358,666,496,505,367,720,262,775,675,398,496,505,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 16:
+          {
+            uint16_t gp[20]={302,855,279,744,462,561,358,666,490,504,368,714,262,771,677,395,491,500,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 17:
+          {
+            uint16_t gp[20]={298,851,279,744,462,561,358,666,482,510,356,707,245,766,682,394,486,496,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 18:
+          {
+            uint16_t gp[20]={290,843,279,744,462,561,358,666,473,519,336,701,222,761,685,393,482,493,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 19:
+          {
+            uint16_t gp[20]={280,833,279,744,462,561,358,666,467,527,314,696,203,757,681,392,480,491,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 20:
+          {
+            uint16_t gp[20]={268,821,279,744,462,561,358,666,465,530,294,693,196,756,669,390,479,490,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 21:
+          {
+            uint16_t gp[20]={254,807,279,744,462,561,358,666,467,527,282,691,203,757,649,387,480,491,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 22:
+          {
+            uint16_t gp[20]={239,792,279,744,462,561,358,666,473,519,278,690,222,761,627,382,482,493,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 23:
+          {
+            uint16_t gp[20]={223,776,279,744,462,561,358,666,482,510,281,689,245,766,607,376,486,496,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 24:
+          {
+            uint16_t gp[20]={209,762,279,744,462,561,358,666,490,504,286,688,262,771,595,369,491,500,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 25:
+          {
+            uint16_t gp[20]={195,748,279,744,462,561,358,666,496,505,288,685,262,775,596,363,496,505,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 26:
+          {
+            uint16_t gp[20]={184,737,279,744,462,561,358,666,501,510,288,681,254,777,605,357,501,510,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+          case 27:
+          {
+            uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512};           
+            for(uint8_t i=0; i<20; i++){
+              goal_pos.position.push_back(gp[i]);
+            }
+            break;
+          }
+        }
+      break;
+    }
+  }
+  goal_joint_states_pub_.publish(goal_pos);
+}
+  
+void ElpistarMotionController::walk(int step){
+  uint8_t phase=28;
+  ros::Rate loop_rate(WALK_FREQUENCY);
+  for(int count=0; count<step; count++){
+    for(int i=0; i<phase; i++){
+      motion(0,i);
+      ros::spinOnce();
+      loop_rate.sleep();
+    }
+  }
+}
+void ElpistarMotionController::stop(){}
+
+int main(int argc, char **argv)
+{
+  // Init ROS node
+  ros::init(argc, argv, "elpistar_dynamixel_controller");
+  ElpistarMotionController motion_controller;
+  
+  // ros::spin();
+  // ros::shutdown();
+  // while (ros::ok())
+  // {
+    motion_controller.walk(10);
+    
+  // }
+
+  return 0;
+}
