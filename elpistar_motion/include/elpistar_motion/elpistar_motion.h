@@ -30,7 +30,9 @@ class ElpistarMotionController{
    ~ElpistarMotionController();
    void walk(int step);
    void stop();
-
+   void front_standup();
+   void back_standup();
+   
   private:
    void initPublisher();
    void motion(uint8_t type, uint8_t pn);
