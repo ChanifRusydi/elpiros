@@ -1,4 +1,4 @@
-ROS MPU6050 Node
+Elpistar IMU
 ================
 
 Publishes IMU DMP sensor data from an MPU6050 connected to an I2C bus on a Raspberry Pi.
@@ -24,21 +24,13 @@ Then install [Bcm2835](http://www.airspayce.com/mikem/bcm2835/index.html):
     make
     make check
     sudo make install
-    
-Then clone the project into your ROS workspace via:
-
-    git clone https://github.com/chrisspen/ros_mpu6050_node.git
-    
-And then compile it:
-
-    catkin_make --pkg ros_mpu6050_node
 
 Usage
 -----
 
 Since the Raspbian kernel and BCM2835 driver restrict I2C access to only the root user, you must launch the node as root like:
 
-    sudo bash -c "source /your/ros/path/setup.bash; roslaunch ros_mpu6050_node mpu6050.launch"
+    sudo bash -c "source /your/ros/path/setup.bash; roslaunch elpistar_imu mpu6050.launch"
 
 Assuming the device is properly wired, it should report "DMP ready!". Now you should be able to see the IMU stream with:
 
@@ -48,5 +40,5 @@ Similar Projects
 ----------------
 
     https://github.com/brNX/ros_mpu6050_node
-    
+
     https://github.com/matpalm/ros-mpu6050-node
