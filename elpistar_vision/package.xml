@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>elpistar vision</name>
-  <version>0.0.0</version>
+  <name>elpistar_vision</name>
+  <version>0.1.0</version>
   <description>Vision for robot El Pistolero</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->

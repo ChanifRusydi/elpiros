@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>ros_mpu6050_node</name>
+  <name>elpistar_imu</name>
   <version>0.0.1</version>
   <description>The MPU6050 package</description>
 
@@ -14,7 +14,7 @@
 
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
-  <url type="website">https://github.com/chrisspen/ros_mpu6050_node</url>
+  <url type="website"></url>
 
   <!-- Author tags are optional, mutiple are allowed, one per tag -->
   <!-- Authors do not have to be maintianers, but could be -->
