@@ -1,6 +1,6 @@
 # http://wiki.ros.org/catkin/CMakeLists.txt
 cmake_minimum_required(VERSION 2.8.3)
-project(ros_mpu6050_node)
+project(elpistar_imu)
 
 set( PATH_I2CDEVLIB "/usr/share/arduino/libraries/i2cdevlib/" )
 
@@ -78,7 +78,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-   include  ${catkin_INCLUDE_DIRS}
+    include  ${catkin_INCLUDE_DIRS}
     #src/linux-mpu9150/glue src/linux-mpu9150/eMPL src/linux-mpu9150/mpu9150
     ${PATH_I2CDEVLIB}RaspberryPi_bcm2835/I2Cdev
     ${PATH_I2CDEVLIB}Arduino/MPU6050/
@@ -90,7 +90,7 @@ include_directories(
 # )
 
 ## Declare a cpp executable
-add_executable(mpu6050_node
+add_executable(elpistar_imu
     src/mpu6050_node.cpp
     ${PATH_I2CDEVLIB}RaspberryPi_bcm2835/I2Cdev/I2Cdev.cpp
     ${PATH_I2CDEVLIB}Arduino/MPU6050/MPU6050.cpp
@@ -101,7 +101,7 @@ add_executable(mpu6050_node
 #add_dependencies(mpu6050_node mpu6050_generate_messages_cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(mpu6050_node
+target_link_libraries(elpistar_imu
    ${catkin_LIBRARIES}
    bcm2835
    m

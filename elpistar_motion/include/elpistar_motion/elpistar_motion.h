@@ -7,7 +7,7 @@
 #include <vector>
 #include <sensor_msgs/JointState.h>
 
-#define WALK_FREQUENCY (20)
+#define WALK_FREQUENCY (15)
 #define WALK 0
 #define FRONT_STANDUP 1
 #define BACK_STANDUP 2

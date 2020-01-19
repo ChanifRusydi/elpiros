@@ -3,7 +3,7 @@
   <arg name="device_name"            default="/dev/ttyUSB0"/>
   <arg name="baud_rate"              default="1000000"/>
   <arg name="protocol_version"       default="1.0"/>
-  <arg name="joint_info"             default="$(find elpistar_dynamixel)/config/front_standup.yaml"/>
+  <arg name="joint_info"             default="$(find elpistar_dynamixel)/config/elpistar_joint.yaml"/>
   <arg name="joint_controller"       default="position_mode"/>
 
   <node pkg="elpistar_dynamixel" type="elpistar_dynamixel_ctrl" name="elpistar_dynamixel_controller" required="true" output="screen">

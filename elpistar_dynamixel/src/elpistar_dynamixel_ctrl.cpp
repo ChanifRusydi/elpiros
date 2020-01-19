@@ -42,7 +42,7 @@ DynamixelController::DynamixelController()
     return;
   }
 
-  initPublisher();
+  //initPublisher();
   initSubscriber();
 
   ROS_INFO("elpistar_dynamixel_controller : Init OK!");
@@ -292,14 +292,17 @@ int main(int argc, char **argv)
   ros::init(argc, argv, "elpistar_dynamixel_controller");
   DynamixelController dynamixel_controller;
   ros::Rate loop_rate(ITERATION_FREQUENCY);
-  // ros::spin();
-  // ros::shutdown();
+//  ros::AsyncSpinner spinner(1);
+//  spinner.start();
+
   while (ros::ok())
   {
-    dynamixel_controller.control_loop();
+  //  dynamixel_controller.control_loop();
     ros::spinOnce();
     loop_rate.sleep();
   }
+
+//  ros::waitForShutdown();
 
   return 0;
 }
