@@ -244,15 +244,13 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
             imu_msg.linear_acceleration.y = aaReal.y * 1/16384. * 9.80665;
             imu_msg.linear_acceleration.z = aaReal.z * 1/16384. * 9.80665;
 
-            if(debug) ROS_INFO("areal (raw) %6d %6d %6d    ", aaReal.x, aaReal.y, aaReal.z);
-            //if(debug) ROS_INFO("areal (m/s^2) %6d %6d %6d    ", imu_msg.linear_acceleration.x, imu_msg.linear_acceleration.y, imu_msg.linear_acceleration.z);
+            //if(debug) ROS_INFO("areal (raw) %6d %6d %6d    ", aaReal.x, aaReal.y, aaReal.z);
+            if(debug) printf("areal (m/s^2) %6f %6f %6f    ", imu_msg.linear_acceleration.x, imu_msg.linear_acceleration.y, imu_msg.linear_acceleration.z);
         #endif
-	//	tf::Quaternion quaternion_tf(q.x, q.y, q.z, q.w);
-	//	rviz_tf.setRotation(quaternion_tf);
-	//	tf_br.sendTransform(tf::StampedTransform(rviz_tf, now, "imu_base", "imu_link"));
-		ROS_INFO("TES");
+		tf::Quaternion quaternion_tf(q.x, q.y, q.z, q.w);
+		rviz_tf.setRotation(quaternion_tf);
+		tf_br.sendTransform(tf::StampedTransform(rviz_tf, now, "imu_base", "imu_link"));
 		imu_pub.publish(imu_msg);
-
 //            mag_msg.vector.x=mpu.calibratedMag[VEC3_X];
 //            mag_msg.vector.y=mpu.calibratedMag[VEC3_Y];
 //            mag_msg.vector.z=mpu.calibratedMag[VEC3_Z];
@@ -388,11 +386,11 @@ int main(int argc, char **argv){
         printf("DMP Initialization failed (code %d)\n", devStatus);
     }
 
-//    usleep(100000);
+    usleep(100000);
 
-    imu_pub = n.advertise<sensor_msgs::Imu>("imu/data", 10);
-    imu_euler_pub = n.advertise<geometry_msgs::Vector3Stamped>("imu/euler", 10);
-    mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("imu/mag", 10);
+    imu_pub = n.advertise<sensor_msgs::Imu>("/imu/data", 10);
+    imu_euler_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/euler", 10);
+    mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/mag", 10);
 
     ros::Rate r(sample_rate);
     while(ros::ok()){
