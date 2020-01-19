@@ -461,8 +461,8 @@ int main(int argc, char **argv)
   // ros::shutdown();
   // while (ros::ok())
   // {
-//    motion_controller.walk(10);
-    motion_controller.front_standup();
+    motion_controller.walk(10);
+//    motion_controller.front_standup();
   // }
 
   return 0;

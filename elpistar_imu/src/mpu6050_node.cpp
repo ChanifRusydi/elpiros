@@ -250,6 +250,7 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
 	//	tf::Quaternion quaternion_tf(q.x, q.y, q.z, q.w);
 	//	rviz_tf.setRotation(quaternion_tf);
 	//	tf_br.sendTransform(tf::StampedTransform(rviz_tf, now, "imu_base", "imu_link"));
+		ROS_INFO("TES");
 		imu_pub.publish(imu_msg);
 
 //            mag_msg.vector.x=mpu.calibratedMag[VEC3_X];
@@ -387,11 +388,11 @@ int main(int argc, char **argv){
         printf("DMP Initialization failed (code %d)\n", devStatus);
     }
 
-    usleep(100000);
+//    usleep(100000);
 
     imu_pub = n.advertise<sensor_msgs::Imu>("imu/data", 10);
     imu_euler_pub = n.advertise<geometry_msgs::Vector3Stamped>("imu/euler", 10);
-	mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("imu/mag", 10);
+    mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("imu/mag", 10);
 
     ros::Rate r(sample_rate);
     while(ros::ok()){
