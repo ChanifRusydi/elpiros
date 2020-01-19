@@ -6,11 +6,13 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
 #include <ros/ros.h>
+#include <opencv2/core.hpp>
 #include <image_transport/image_transport.h>
 #include <cv_bridge/cv_bridge.h>
-
+ 
 using namespace cv;
 using namespace std;
+
 
 int main(int argc, char* argv[])
 {
@@ -30,7 +32,7 @@ sensor_msgs::ImagePtr ros_img;
 		cap.read(frame);
 		cvtColor(frame, gray, COLOR_BGR2GRAY);
 		GaussianBlur(gray, blur, Size(5, 5), 0);
-		threshold(blur, th, 35, 255, THRESH_BINARY + THRESH_OTSU);
+		threshold(blur, th, 60, 255, THRESH_BINARY + THRESH_OTSU);
 		
 		vector<vector<Point>> contours;
 		vector<Vec4i> hierarchy;
@@ -40,34 +42,39 @@ sensor_msgs::ImagePtr ros_img;
 		drawContours(frame, contours, -1, color, 3);
 
 
-		imshow("Image", frame);
+	//	imshow("Image", frame);
 
 
 		Moments M;
-		int cx, cy;
+		int cx, cy,len;
 		string status;
-		for (int i = 0; i <= contours.size() - 1; i++) {
-			double area = contourArea(contours[i]);
-			if (area >= 500) {
+                 len =  1;
+		//for (int i = 0; i <= contours.size() - 1; i++) {
+			//double area = contourArea(contours[i]);
+			if (contours.size() >= 0) {
 				M = moments(contours[i]);
 				cx = (int)(M.m10 / M.m00);
 				cy = (int)(M.m01 / M.m00);
-
-				if (cx <= 154) {
+                              line(frame, Point(cx, 0), Point(cx, 240), Scalar(255,0,0), 2, len);
+                              line(frame, Point(0, cy), Point(320, cy), Scalar(255,0,0), 2, len);
+                              drawContours(frame, contours, -1,Scalar(0,255,0),len);
+				if (cx >= 120) {
 					status = "Kiri";
 				}
-				else if (cx >= 166) {
+				if (cx < 120  && cx > 50) {
 					status = "Kanan";
 				}
-				else {
+				if(cx <= 50) {
 					status = "Tengah";
 				}
-
+                            
 				cout << "Centroid X: " << cx;
 				cout << " Centroid Y: " << cy;
 				cout << " Status: " << status << endl;
-			}
-		}
+			}      
+
+
+	// 	}
 
 		if (waitKey(30) == 27) {
 			cout << "Key has been pressed" << endl;
