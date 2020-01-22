@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
    std_msgs
    std_srvs
    geometry_msgs
+   message_generation
    tf
 )
 
@@ -36,11 +37,12 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_C_FLAGS}")
 #######################################
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
+add_message_files(
+   FILES
+   EulerIMU.msg
 #   Message1.msg
 #   Message2.msg
-# )
+)
 
 ## Generate services in the 'srv' folder
 #add_service_files(
@@ -50,10 +52,10 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_C_FLAGS}")
 #)
 
 ## Generate added messages and services with any dependencies listed here
-#generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-#)
+generate_messages(
+   DEPENDENCIES
+   std_msgs  # Or other packages containing msgs
+)
 
 ###################################
 ## catkin specific configuration ##
@@ -67,7 +69,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_C_FLAGS}")
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES mpu6050
-   CATKIN_DEPENDS std_msgs std_srvs geometry_msgs tf
+   CATKIN_DEPENDS std_msgs std_srvs geometry_msgs tf message_runtime
 #  DEPENDS system_lib
 )
 

@@ -15,7 +15,7 @@
 #include <geometry_msgs/Vector3Stamped.h>
 #include <tf/transform_datatypes.h>
 #include <tf/transform_broadcaster.h>
-
+#include <elpistar_imu/EulerIMU.h>
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 
@@ -49,14 +49,14 @@ MPU6050 mpu;
 // (in degrees) calculated from the quaternions coming from the FIFO.
 // Note that Euler angles suffer from gimbal lock (for more info, see
 // http://en.wikipedia.org/wiki/Gimbal_lock)
-//#define OUTPUT_READABLE_EULER
+#define OUTPUT_READABLE_EULER
 
 // uncomment "OUTPUT_READABLE_YAWPITCHROLL" if you want to see the yaw/
 // pitch/roll angles (in degrees) calculated from the quaternions coming
 // from the FIFO. Note this also requires gravity vector calculations.
 // Also note that yaw/pitch/roll angles suffer from gimbal lock (for
 // more info, see: http://en.wikipedia.org/wiki/Gimbal_lock)
-#define OUTPUT_READABLE_YAWPITCHROLL
+//#define OUTPUT_READABLE_YAWPITCHROLL
 
 // uncomment "OUTPUT_READABLE_REALACCEL" if you want to see acceleration
 // components with gravity removed. This acceleration reference frame is
@@ -139,9 +139,11 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
     imu_msg.header.stamp = now;
     imu_msg.header.frame_id = frame_id;
 
-    geometry_msgs::Vector3Stamped imu_euler_msg;
-    imu_euler_msg.header.stamp = now;
-    imu_euler_msg.header.frame_id = frame_id;
+    //geometry_msgs::Vector3Stamped imu_euler_msg;
+   // imu_euler_msg.header.stamp = now;
+   // imu_euler_msg.header.frame_id = frame_id;
+
+    elpistar_imu::EulerIMU imu_euler_msg;
 
     geometry_msgs::Vector3Stamped mag_msg;
     mag_msg.header.stamp = now;
@@ -199,16 +201,20 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
 		imu_msg.orientation_covariance[4] = pitch_roll_covariance;
 		imu_msg.orientation_covariance[8] = yaw_covariance;
 
-//        #ifdef OUTPUT_READABLE_EULER
-//            // display Euler angles in degrees
-//            mpu.dmpGetQuaternion(&q, fifoBuffer);
-//            mpu.dmpGetEuler(euler, &q);
-		//		imu_euler_msg.vector.y=-mpu.fusedEuler[VEC3_Y]*RAD_TO_DEGREE;
-		//		imu_euler_msg.vector.x=mpu.fusedEuler[VEC3_X]*RAD_TO_DEGREE;
-		//		imu_euler_msg.vector.z=-mpu.fusedEuler[VEC3_Z]*RAD_TO_DEGREE;
-		//		imu_euler_pub.publish(imu_euler_msg);
-//            if(debug) printf("euler %7.2f %7.2f %7.2f    ", euler[0] * 180/M_PI, euler[1] * 180/M_PI, euler[2] * 180/M_PI);
-//        #endif
+        #ifdef OUTPUT_READABLE_EULER
+            // display Euler angles in degrees
+            mpu.dmpGetQuaternion(&q, fifoBuffer);
+            mpu.dmpGetEuler(euler, &q);
+//				imu_euler_msg.vector.y=-mpu.fusedEuler[VEC3_Y]*RAD_TO_DEGREE;
+//				imu_euler_msg.vector.x=mpu.fusedEuler[VEC3_X]*RAD_TO_DEGREE;
+//				imu_euler_msg.vector.z=-mpu.fusedEuler[VEC3_Z]*RAD_TO_DEGREE;
+//				imu_euler_pub.publish(imu_euler_msg);
+	    imu_euler_msg.psi=euler[0]*180/M_PI;
+	    imu_euler_msg.theta=euler[1]*180/M_PI;
+	    imu_euler_msg.phi=euler[2]*180/M_PI;
+	    imu_euler_pub.publish(imu_euler_msg);
+            if(debug) printf("euler %7.2f %7.2f %7.2f    ", euler[0] * 180/M_PI, euler[1] * 180/M_PI, euler[2] * 180/M_PI);
+        #endif
 
 		// http://docs.ros.org/api/sensor_msgs/html/msg/Imu.html
 		// Accelerations should be in m/s^2 (not in g's), and rotational velocity should be in rad/sec
@@ -389,7 +395,7 @@ int main(int argc, char **argv){
     usleep(100000);
 
     imu_pub = n.advertise<sensor_msgs::Imu>("/imu/data", 10);
-    imu_euler_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/euler", 10);
+    imu_euler_pub = n.advertise<elpistar_imu::EulerIMU>("/imu/euler", 10);
     mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/mag", 10);
 
     ros::Rate r(sample_rate);
