@@ -1,3 +1,3 @@
-float32 psi
-float32 theta
-float32 phi
+float64 psi
+float64 theta
+float64 phi

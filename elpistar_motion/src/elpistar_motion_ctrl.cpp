@@ -18,10 +18,10 @@ void ElpistarMotionController::initPublisher(){
   goal_joint_states_pub_ = node_handle_.advertise<sensor_msgs::JointState>(robot_name_+"/goal_joint_position",10);
 }
 void ElpistarMotionController::initSubscriber(){
-  position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &euler_pos_cb, this);
+  position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &ElpistarMotionController::euler_pos_cb, this);
 }
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
-  printf("psi: %7.2f, theta: %7.2f, phi: %7.2f",msg->psi,msg->theta,msg->phi);
+  printf("psi: %7.2f, theta: %7.2f, phi: %7.2f\n",msg->psi,msg->theta,msg->phi);
 
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
@@ -478,14 +478,16 @@ int main(int argc, char **argv)
   // Init ROS node
   ros::init(argc, argv, "elpistar_dynamixel_controller");
   ElpistarMotionController motion_controller;
-  
-  // ros::spin();
+  ros::Rate loop(10);
+  //ros::spin();
   // ros::shutdown();
-  // while (ros::ok())
-  // {
+   while (ros::ok())
+   {
 //    motion_controller.walk(10);
 //    motion_controller.front_standup();
-  // }
+    ros::spinOnce();
+    loop.sleep();
+   }
 
   return 0;
 }
