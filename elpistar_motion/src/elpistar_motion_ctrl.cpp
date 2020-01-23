@@ -5,7 +5,7 @@ ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
 {
   robot_name_   = node_handle_.param<std::string>("robot_name", "elpistar");
   initPublisher();
- 
+  initSubscriber();
   ROS_INFO("elpistar_motion_controller : Init OK!");
 }
 
@@ -17,7 +17,13 @@ ElpistarMotionController::~ElpistarMotionController(){
 void ElpistarMotionController::initPublisher(){
   goal_joint_states_pub_ = node_handle_.advertise<sensor_msgs::JointState>(robot_name_+"/goal_joint_position",10);
 }
+void ElpistarMotionController::initSubscriber(){
+  position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &euler_pos_cb, this);
+}
+void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
+  printf("psi: %7.2f, theta: %7.2f, phi: %7.2f",msg->psi,msg->theta,msg->phi);
 
+}
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;
   
@@ -477,7 +483,7 @@ int main(int argc, char **argv)
   // ros::shutdown();
   // while (ros::ok())
   // {
-    motion_controller.walk(10);
+//    motion_controller.walk(10);
 //    motion_controller.front_standup();
   // }
 
