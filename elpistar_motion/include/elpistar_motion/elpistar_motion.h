@@ -12,7 +12,14 @@
 #define WALK 0
 #define FRONT_STANDUP 1
 #define BACK_STANDUP 2
- 
+#define CONTROL 3
+
+typedef struct PID{
+   float Kp,Ki,Kd,Ts;
+   float P,I,D;
+   float error,last_error,SP;
+   float u;
+};
 class ElpistarMotionController{
  private:
  
@@ -38,6 +45,7 @@ class ElpistarMotionController{
   private:
    void initPublisher();
    void initSubscriber();
+   PID phi_ctrl;
    void motion(uint8_t type, uint8_t pn);
 };
 

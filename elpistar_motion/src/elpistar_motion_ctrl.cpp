@@ -1,9 +1,28 @@
 #include <elpistar_motion/elpistar_motion.h>
-
+int mapd(int x, int min, int max)
+{
+  if(x<=max){
+    if(x>=min)
+      return x;
+    else{
+      return min;  
+    }
+  }
+  else{
+    return max;
+  }
+}
 ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
      priv_node_handle_("~")
 {
   robot_name_   = node_handle_.param<std::string>("robot_name", "elpistar");
+  phi_ctrl.SP= priv_node_handle_.param<float>("phi_SP",2);
+  phi_ctrl.Kp= priv_node_handle_.param<float>("phi_Kp",0);
+  phi_ctrl.Ki= priv_node_handle_.param<float>("phi_Ki",0);
+  phi_ctrl.Kd= priv_node_handle_.param<float>("phi_Kd",0);
+  phi_ctrl.Ts= priv_node_handle_.param<float>("phi_Ts",0);
+  printf("%.2f, %.2f, %.2f, %.2f",phi_ctrl.Kp, phi_ctrl.Ki, phi_ctrl.Kd, phi_ctrl.SP);
+  ros::shutdown();
   initPublisher();
   initSubscriber();
   ROS_INFO("elpistar_motion_controller : Init OK!");
@@ -21,8 +40,27 @@ void ElpistarMotionController::initSubscriber(){
   position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &ElpistarMotionController::euler_pos_cb, this);
 }
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
+  sensor_msgs::JointState dxl;
+  uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512};
+  float phi=msg->phi;
+  phi_ctrl.error=phi_ctrl.SP-phi;
+  phi_ctrl.P=phi_ctrl.Kp*phi_ctrl.error;
+  phi_ctrl.I=phi_ctrl.Ki*(phi_ctrl.error+phi_ctrl.last_error)*phi_ctrl.Ts;
+  phi_ctrl.D=phi_ctrl.Kd*(phi_ctrl.error-phi_ctrl.last_error)/phi_ctrl.Ts;
+  phi_ctrl.u=phi_ctrl.P+phi_ctrl.I+phi_ctrl.D;
+  phi_ctrl.last_error=phi_ctrl.error;
+  gp[10]=mapd(72 + phi_ctrl.u, 0, 255)+256;
+  gp[11]=mapd(183 - phi_ctrl.u, 0, 255)+512;
+  gp[12]=mapd(240 - phi_ctrl.u, 0, 255);
+  gp[13]=mapd(15 + phi_ctrl.u, 0, 255)+768;
+  gp[14]=mapd(135 - phi_ctrl.u, 0, 255)+512;
+  gp[15]=mapd(120 + phi_ctrl.u, 0, 255)+256;
+  for(uint8_t i=0; i<20; i++){
+    dxl.position.push_back(gp[i]);
+  }
+  goal_joint_states_pub_.publish(dxl);
   printf("psi: %7.2f, theta: %7.2f, phi: %7.2f\n",msg->psi,msg->theta,msg->phi);
-
+  
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;

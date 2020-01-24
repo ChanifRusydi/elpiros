@@ -5,7 +5,19 @@
   <arg name="protocol_version"       default="1.0"/>
   <arg name="joint_info"             default="$(find elpistar_dynamixel)/config/elpistar_joint.yaml"/>
   <arg name="joint_controller"       default="position_mode"/>
+  <arg name="phi_SP"                 default="2"/>
+  <arg name="phi_KP"                 default="0"/>
+  <arg name="phi_KI"                 default="0"/>
+  <arg name="phi_KD"                 default="0"/>
+  <arg name="phi_TS"                 default="0"/>  
+  
   <param name="robot_name"           value="$(arg use_robot_name)"/>
     
-  <node pkg="elpistar_motion" type="elpistar_motion_ctrl" name="elpistar_motion_controller" required="true" output="screen"/>
+  <node pkg="elpistar_motion" type="elpistar_motion_ctrl" name="elpistar_motion_controller" required="true" output="screen">
+      <param name="phi_SP"           value="$(arg phi_SP)"/>
+      <param name="phi_Kp"           value="$(arg phi_KP)"/>
+      <param name="phi_Ki"           value="$(arg phi_KI)"/>
+      <param name="phi_Kd"           value="$(arg phi_KD)"/>
+      <param name="phi_Ts"           value="$(arg phi_TS)"/>
+  </node>
 </launch>
