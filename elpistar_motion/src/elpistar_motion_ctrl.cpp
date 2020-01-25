@@ -62,8 +62,9 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
       dxl.position.push_back(gp[i]);
     }
     goal_joint_states_pub_.publish(dxl);
-    printf("%7.2f\n",msg->phi);
+    phi_ctrl.en=false;
   }
+    printf("%7.2f\n",msg->phi);
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;
@@ -486,13 +487,15 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   
 void ElpistarMotionController::walk(int step){
   uint8_t phase=28;
-  ros::Rate loop_rate(WALK_FREQUENCY);
+  ros::Rate loop_rate(20);
+  ros::Rate step_time(10);
   for(int count=0; count<step; count++){
     for(int i=0; i<phase; i++){
       motion(WALK,i);
       ros::spinOnce();
       loop_rate.sleep();
     }
+    step_time.sleep();
   }
 }
 void ElpistarMotionController::front_standup(){
@@ -520,16 +523,16 @@ int main(int argc, char **argv)
   // Init ROS node
   ros::init(argc, argv, "elpistar_dynamixel_controller");
   ElpistarMotionController motion_controller;
-  ros::Rate loop(10);
+//  ros::Rate loop(5);
   //ros::spin();
   // ros::shutdown();
-   while (ros::ok())
-   {
-//    motion_controller.walk(1);
+//   while (ros::ok())
+//   {
+    motion_controller.walk(10);
 //    motion_controller.front_standup();
-    ros::spinOnce();
-    loop.sleep();
-   }
+//    ros::spinOnce();
+//    loop.sleep();
+//   }
 
   return 0;
 }
