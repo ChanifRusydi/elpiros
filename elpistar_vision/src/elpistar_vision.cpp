@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
 
 		cvtColor(crop, gray, COLOR_BGR2GRAY);
 		GaussianBlur(gray, blur, Size(5, 5), 0);
-		threshold(blur, th, 60, 255, THRESH_BINARY_INV);
+		threshold(blur, th, 60, 255, THRESH_BINARY);
 		
 		vector<vector<Point>> contours;
 		vector<Vec4i> hierarchy;
