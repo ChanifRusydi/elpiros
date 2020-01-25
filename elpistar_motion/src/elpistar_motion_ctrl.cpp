@@ -52,14 +52,22 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
     phi_ctrl.D=phi_ctrl.Kd*(phi_ctrl.error-phi_ctrl.last_error)/phi_ctrl.Ts;
     phi_ctrl.u=phi_ctrl.P+phi_ctrl.I+phi_ctrl.D;
     phi_ctrl.last_error=phi_ctrl.error;
+    uint16_t speed[20]={767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767};
     gp[10]=mapd(72 + phi_ctrl.u, 0, 255)+256;
     gp[11]=mapd(183 - phi_ctrl.u, 0, 255)+512;
     gp[12]=mapd(240 - phi_ctrl.u, 0, 255);
     gp[13]=mapd(15 + phi_ctrl.u, 0, 255)+768;
-    gp[14]=mapd(135 - phi_ctrl.u, 0, 255)+512;
-    gp[15]=mapd(120 + phi_ctrl.u, 0, 255)+256;
+    gp[14]=mapd(135 - phi_ctrl.u/1.2, 0, 255)+512;
+    gp[15]=mapd(120 + phi_ctrl.u/1.2, 0, 255)+256;
+    speed[10]=mapd(170+ abs(phi_ctrl.u*2), 5, 250);
+    speed[11]=mapd(170+ abs(phi_ctrl.u*2), 5, 250);
+    speed[12]=mapd(170+ abs(phi_ctrl.u*2), 5, 250);
+    speed[13]=mapd(170+ abs(phi_ctrl.u*2), 5, 250);
+    speed[14]=mapd(170+ abs(phi_ctrl.u*2), 5, 250);
+    speed[15]=mapd(170+ abs(phi_ctrl.u*2), 5, 250);
     for(uint8_t i=0; i<20; i++){
       dxl.position.push_back(gp[i]);
+      dxl.velocity.push_back(speed[i]);
     }
     goal_joint_states_pub_.publish(dxl);
     phi_ctrl.en=false;

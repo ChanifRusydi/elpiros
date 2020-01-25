@@ -248,7 +248,12 @@ void DynamixelController::goalJointPositionCallback(const sensor_msgs::JointStat
   for (auto const dxl:dynamixel_){
     goal_joint_position[dxl.second-1] = msg->position.at(dxl.second-1);
     ID[dxl.second-1] = dxl.second;
-//    speed[dxl.second-1]=msg->velocity.at(dxl.second-1);
+
+  }
+  if(!msg->velocity.empty()){
+    for(auto const dxl:dynamixel_){
+      speed[dxl.second-1]=msg->velocity.at(dxl.second-1);
+    }
   }
   int32_t goal_position[JOINT_NUM] = {0, };
 
