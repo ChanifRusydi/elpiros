@@ -16,13 +16,13 @@ ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
      priv_node_handle_("~")
 {
   robot_name_   = node_handle_.param<std::string>("robot_name", "elpistar");
-  phi_ctrl.SP= priv_node_handle_.param<float>("phi_SP",2);
+  phi_ctrl.SP= priv_node_handle_.param<float>("phi_SP",-1.5);
   phi_ctrl.Kp= priv_node_handle_.param<float>("phi_Kp",0);
   phi_ctrl.Ki= priv_node_handle_.param<float>("phi_Ki",0);
   phi_ctrl.Kd= priv_node_handle_.param<float>("phi_Kd",0);
-  phi_ctrl.Ts= priv_node_handle_.param<float>("phi_Ts",0);
+  phi_ctrl.Ts= priv_node_handle_.param<float>("phi_Ts",0.2);
   printf("%.2f, %.2f, %.2f, %.2f",phi_ctrl.Kp, phi_ctrl.Ki, phi_ctrl.Kd, phi_ctrl.SP);
-  ros::shutdown();
+//  ros::shutdown();
   initPublisher();
   initSubscriber();
   ROS_INFO("elpistar_motion_controller : Init OK!");
@@ -41,7 +41,7 @@ void ElpistarMotionController::initSubscriber(){
 }
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
-  uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512};
+  uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512};
   float phi=msg->phi;
   phi_ctrl.error=phi_ctrl.SP-phi;
   phi_ctrl.P=phi_ctrl.Kp*phi_ctrl.error;
@@ -59,7 +59,7 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
     dxl.position.push_back(gp[i]);
   }
   goal_joint_states_pub_.publish(dxl);
-  printf("psi: %7.2f, theta: %7.2f, phi: %7.2f\n",msg->psi,msg->theta,msg->phi);
+  printf("%7.2f\n",msg->phi);
   
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
