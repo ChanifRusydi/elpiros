@@ -19,6 +19,7 @@ typedef struct PID{
    float P,I,D;
    float error,last_error,SP;
    float u;
+   bool en;
 };
 class ElpistarMotionController{
  private:

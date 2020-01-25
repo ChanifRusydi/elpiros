@@ -21,6 +21,7 @@ ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
   phi_ctrl.Ki= priv_node_handle_.param<float>("phi_Ki",0);
   phi_ctrl.Kd= priv_node_handle_.param<float>("phi_Kd",0);
   phi_ctrl.Ts= priv_node_handle_.param<float>("phi_Ts",0.2);
+  phi_ctrl.en= false;
   printf("%.2f, %.2f, %.2f, %.2f",phi_ctrl.Kp, phi_ctrl.Ki, phi_ctrl.Kd, phi_ctrl.SP);
 //  ros::shutdown();
   initPublisher();
@@ -41,26 +42,28 @@ void ElpistarMotionController::initSubscriber(){
 }
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
-  uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512};
-  float phi=msg->phi;
-  phi_ctrl.error=phi_ctrl.SP-phi;
-  phi_ctrl.P=phi_ctrl.Kp*phi_ctrl.error;
-  phi_ctrl.I=phi_ctrl.Ki*(phi_ctrl.error+phi_ctrl.last_error)*phi_ctrl.Ts;
-  phi_ctrl.D=phi_ctrl.Kd*(phi_ctrl.error-phi_ctrl.last_error)/phi_ctrl.Ts;
-  phi_ctrl.u=phi_ctrl.P+phi_ctrl.I+phi_ctrl.D;
-  phi_ctrl.last_error=phi_ctrl.error;
-  gp[10]=mapd(72 + phi_ctrl.u, 0, 255)+256;
-  gp[11]=mapd(183 - phi_ctrl.u, 0, 255)+512;
-  gp[12]=mapd(240 - phi_ctrl.u, 0, 255);
-  gp[13]=mapd(15 + phi_ctrl.u, 0, 255)+768;
-  gp[14]=mapd(135 - phi_ctrl.u, 0, 255)+512;
-  gp[15]=mapd(120 + phi_ctrl.u, 0, 255)+256;
-  for(uint8_t i=0; i<20; i++){
-    dxl.position.push_back(gp[i]);
+  // uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512}; walk_ready
+  uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512}; //walk
+  if(phi_ctrl.en){
+    float phi=msg->phi;
+    phi_ctrl.error=phi_ctrl.SP-phi;
+    phi_ctrl.P=phi_ctrl.Kp*phi_ctrl.error;
+    phi_ctrl.I=phi_ctrl.Ki*(phi_ctrl.error+phi_ctrl.last_error)*phi_ctrl.Ts;
+    phi_ctrl.D=phi_ctrl.Kd*(phi_ctrl.error-phi_ctrl.last_error)/phi_ctrl.Ts;
+    phi_ctrl.u=phi_ctrl.P+phi_ctrl.I+phi_ctrl.D;
+    phi_ctrl.last_error=phi_ctrl.error;
+    gp[10]=mapd(72 + phi_ctrl.u, 0, 255)+256;
+    gp[11]=mapd(183 - phi_ctrl.u, 0, 255)+512;
+    gp[12]=mapd(240 - phi_ctrl.u, 0, 255);
+    gp[13]=mapd(15 + phi_ctrl.u, 0, 255)+768;
+    gp[14]=mapd(135 - phi_ctrl.u, 0, 255)+512;
+    gp[15]=mapd(120 + phi_ctrl.u, 0, 255)+256;
+    for(uint8_t i=0; i<20; i++){
+      dxl.position.push_back(gp[i]);
+    }
+    goal_joint_states_pub_.publish(dxl);
+    printf("%7.2f\n",msg->phi);
   }
-  goal_joint_states_pub_.publish(dxl);
-  printf("%7.2f\n",msg->phi);
-  
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;
@@ -291,6 +294,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           for(uint8_t i=0; i<20; i++){
             dxl.position.push_back(gp[i]);
           }
+          phi_ctrl.en=true;
           break;
         }
       }
@@ -521,7 +525,7 @@ int main(int argc, char **argv)
   // ros::shutdown();
    while (ros::ok())
    {
-//    motion_controller.walk(10);
+//    motion_controller.walk(1);
 //    motion_controller.front_standup();
     ros::spinOnce();
     loop.sleep();
