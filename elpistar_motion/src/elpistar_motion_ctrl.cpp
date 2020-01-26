@@ -306,6 +306,12 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           phi_ctrl.en=true;
           break;
         }
+        case 100:
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            dxl.position.push_back(gp[i]);
+          }
+          phi_ctrl.en=true;
       }
       break;
     }
@@ -506,6 +512,10 @@ void ElpistarMotionController::walk(int step){
     step_time.sleep();
   }
 }
+void ElpistarMotionController::walk_ready(){
+  motion(WALK,100);
+  
+}
 void ElpistarMotionController::front_standup(){
   uint8_t phase=4;
   ros::Rate loop_rate(2);
@@ -536,6 +546,7 @@ int main(int argc, char **argv)
   // ros::shutdown();
 //   while (ros::ok())
 //   {
+    motion_controller.walk_ready();
     motion_controller.walk(10);
 //    motion_controller.front_standup();
 //    ros::spinOnce();

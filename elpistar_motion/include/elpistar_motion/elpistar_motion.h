@@ -39,6 +39,7 @@ class ElpistarMotionController{
    ElpistarMotionController();
    ~ElpistarMotionController();
    void walk(int step);
+   void walk_ready();
    void stop();
    void front_standup();
    void back_standup();
