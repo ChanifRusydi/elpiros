@@ -1,80 +1,80 @@
 r_shoulder_y:
   ID: 1
+  Goal_Position: 235
   Return_Delay_Time: 0
-  Lock: 1
 l_shoulder_y:
   ID: 2
+  Goal_Position: 788
   Return_Delay_Time: 0
-  Lock: 1
 r_shoulder_x:
   ID: 3
+  Goal_Position: 279
   Return_Delay_Time: 0
-  Lock: 1
 l_shoulder_x:
   ID: 4
+  Goal_Position: 744
   Return_Delay_Time: 0
-  Lock: 1
 r_elbow_y:
   ID: 5
+  Goal_Position: 462
   Return_Delay_Time: 0
-  Lock: 1
 l_elbow_y:
   ID: 6
+  Goal_Position: 561
   Return_Delay_Time: 0
-  Lock: 1
 r_hip_z:
   ID: 7
+  Goal_Position: 358
   Return_Delay_Time: 0
-  Lock: 1
 l_hip_z:
   ID: 8
+  Goal_Position: 666
   Return_Delay_Time: 0
-  Lock: 1
 r_hip_x:
   ID: 9
+  Goal_Position: 507
   Return_Delay_Time: 0
-  Lock: 1
 l_hip_x:
   ID: 10
+  Goal_Position: 516
   Return_Delay_Time: 0
-  Lock: 1
 r_hip_y:
   ID: 11
+  Goal_Position: 306
   Return_Delay_Time: 0
-  Lock: 1
 l_hip_y:
   ID: 12
+  Goal_Position: 717
   Return_Delay_Time: 0
-  Lock: 1
 r_knee_y:
   ID: 13
+  Goal_Position: 240
   Return_Delay_Time: 0
-  Lock: 1
 l_knee_y:
   ID: 14
+  Goal_Position: 783
   Return_Delay_Time: 0
-  Lock: 1
 r_ankle_y:
   ID: 15
+  Goal_Position: 647
   Return_Delay_Time: 0
-  Lock: 1
 l_ankle_y:
   ID: 16
+  Goal_Position: 376
   Return_Delay_Time: 0
-  Lock: 1
 r_ankle_x:
   ID: 17
+  Goal_Position: 507
   Return_Delay_Time: 0
-  Lock: 1
 l_ankle_x:
   ID: 18
+  Goal_Position: 516
   Return_Delay_Time: 0
-  Lock: 1
 head_y:
   ID: 19
+  Goal_Position: 372
   Return_Delay_Time: 0
-  Lock: 1
 head_z:
   ID: 20
+  Goal_Position: 512
   Return_Delay_Time: 0
-  Lock: 1

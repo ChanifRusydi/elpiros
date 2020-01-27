@@ -306,12 +306,14 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           phi_ctrl.en=true;
           break;
         }
-        case 100:
+        case 100:{
           uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512};           
           for(uint8_t i=0; i<20; i++){
             dxl.position.push_back(gp[i]);
           }
           phi_ctrl.en=true;
+	  break;
+	}
       }
       break;
     }
@@ -501,8 +503,8 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   
 void ElpistarMotionController::walk(int step){
   uint8_t phase=28;
-  ros::Rate loop_rate(20);
-  ros::Rate step_time(10);
+  ros::Rate loop_rate(28);
+  ros::Rate step_time(2);
   for(int count=0; count<step; count++){
     for(int i=0; i<phase; i++){
       motion(WALK,i);
@@ -513,8 +515,12 @@ void ElpistarMotionController::walk(int step){
   }
 }
 void ElpistarMotionController::walk_ready(){
-  motion(WALK,100);
-  
+  ros::Rate loop_rate(20);
+  for(int count=0; count<5; count++){
+    motion(WALK,100);
+    ros::spinOnce();
+    loop_rate.sleep();
+  }
 }
 void ElpistarMotionController::front_standup(){
   uint8_t phase=4;
@@ -541,12 +547,15 @@ int main(int argc, char **argv)
   // Init ROS node
   ros::init(argc, argv, "elpistar_dynamixel_controller");
   ElpistarMotionController motion_controller;
+  ros::Rate transition(0.2);
+
 //  ros::Rate loop(5);
   //ros::spin();
   // ros::shutdown();
 //   while (ros::ok())
 //   {
     motion_controller.walk_ready();
+    transition.sleep();
     motion_controller.walk(10);
 //    motion_controller.front_standup();
 //    ros::spinOnce();
