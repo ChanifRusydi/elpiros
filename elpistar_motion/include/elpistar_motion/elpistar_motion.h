@@ -7,6 +7,7 @@
 #include <vector>
 #include <sensor_msgs/JointState.h>
 #include <elpistar_imu/EulerIMU.h>
+#include <elpistar_msgs/DXLServer.h>
 
 #define WALK_FREQUENCY (15)
 #define WALK 0
@@ -31,6 +32,9 @@ class ElpistarMotionController{
   //ROS Topic Publisher and Subscriber
   ros::Publisher goal_joint_states_pub_;
   ros::Subscriber position_sub_;
+
+  //ROS Service Client
+  ros::ServiceClient move_dxl_client_;
   //Elpistar Motion Controller Parameter
 
   std::string robot_name_;
@@ -47,6 +51,7 @@ class ElpistarMotionController{
   private:
    void initPublisher();
    void initSubscriber();
+   void initClient();
    PID phi_ctrl;
    void motion(uint8_t type, uint8_t pn);
 };

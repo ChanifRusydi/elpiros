@@ -10,6 +10,7 @@
 
 #include <dynamixel_workbench_toolbox/dynamixel_workbench.h>
 #include <sensor_msgs/JointState.h>
+#include <elpistar_msgs/DXLServer.h>
 
 namespace elpistar_dynamixel{
 // SYNC_WRITE_HANDLER
@@ -47,7 +48,7 @@ class DynamixelController
 //   ros::Subscriber goal_gripper_states_sub_;
 
   // ROS Service Server
-
+  ros::ServiceServer move_dxl_server_;
   // ROS Service Client
 
   // Dynamixel Workbench Parameters
@@ -74,6 +75,7 @@ class DynamixelController
 
   void initPublisher();
   void initSubscriber();
+  void initServer();
   bool getDynamixelInfo(const std::string yaml_file);
   void getDynamixelInst();
   void setOperatingMode();
@@ -83,8 +85,8 @@ class DynamixelController
   void readVelocity(double *value);
   void updateJointStates();
 
-  void goalJointPositionCallback(const sensor_msgs::JointState::ConstPtr &msg);
-
+  bool move_dxl(elpistar_msgs::DXLServer::Request &req,
+                elpistar_msgs::DXLServer::Response &res);
 };
 }
 

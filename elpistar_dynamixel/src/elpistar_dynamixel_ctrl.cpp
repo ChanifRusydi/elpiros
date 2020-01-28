@@ -44,7 +44,7 @@ DynamixelController::DynamixelController()
 
   //initPublisher();
   initSubscriber();
-
+  initServer();
   ROS_INFO("elpistar_dynamixel_controller : Init OK!");
 }
 
@@ -63,7 +63,11 @@ void DynamixelController::initPublisher()
 
 void DynamixelController::initSubscriber()
 {
-  goal_joint_states_sub_    = node_handle_.subscribe(robot_name_ + "/goal_joint_position", 10, &DynamixelController::goalJointPositionCallback, this);
+  // goal_joint_states_sub_    = node_handle_.subscribe(robot_name_ + "/goal_joint_position", 10, &DynamixelController::goalJointPositionCallback, this);
+}
+void DynamixelController::initServer()
+{
+  move_dxl_server_=node_handle_.advertiseService(robot_name_ + "/move_dxl", &DynamixelController::move_dxl , this);
 }
 
 bool DynamixelController::getDynamixelInfo(const std::string yaml_file){
@@ -238,49 +242,59 @@ void DynamixelController::updateJointStates()
   joint_states_pub_.publish(joint_state);
 }
 
-void DynamixelController::goalJointPositionCallback(const sensor_msgs::JointState::ConstPtr &msg)
+bool DynamixelController::move_dxl(elpistar_msgs::DXLServer::Request &req,
+                                   elpistar_msgs::DXLServer::Response &res)
 {
   int32_t goal_joint_position[JOINT_NUM] = {0, };
+  
   uint8_t ID[JOINT_NUM];
+  bool is_moving=false;
   int32_t speed[JOINT_NUM]={767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767};
+  bool stat;
   const char* log = NULL;
-  bool res;
-  printf("GP called");
   for (auto const dxl:dynamixel_){
-    goal_joint_position[dxl.second-1] = msg->position.at(dxl.second-1);
+    int32_t data;
+    goal_joint_position[dxl.second-1] = req.jointstate.position.at(dxl.second-1);
     ID[dxl.second-1] = dxl.second;
-
+    joint_controller_->itemRead(dxl.second, "Moving", &data);
+    if(data==1){
+      is_moving=true;
+    }
   }
-  if(!msg->velocity.empty()){
+  if(!req.jointstate.velocity.empty()){
     for(auto const dxl:dynamixel_){
-      speed[dxl.second-1]=msg->velocity.at(dxl.second-1);
+      speed[dxl.second-1]=req.jointstate.velocity.at(dxl.second-1);
     }
   }
   int32_t goal_position[JOINT_NUM] = {0, };
 
-  // for (int index = 0; index < JOINT_NUM; index++)
-  // {
-  //   goal_position[index] = joint_controller_->convertRadian2Value(joint_id_.at(index), goal_joint_position[index]);
-  // }
+  if(!is_moving){
+    stat= joint_controller_->syncWrite(1, ID, (uint8_t) 20, speed,(uint8_t) 1, &log);
+    if(stat){
+      ROS_INFO("Sync Write Moving Speed Success");
+    }
+    else{
+      ROS_ERROR("Sync Write Moving Speed : %s",log);
+      ros::shutdown();
+      return false;
+    }
 
-  res= joint_controller_->syncWrite(1, ID, (uint8_t) 20, speed,(uint8_t) 1, &log);
-  if(res){
-    ROS_INFO("Sync Write Moving Speed Success");
+    stat= joint_controller_->syncWrite(SYNC_WRITE_HANDLER_FOR_GOAL_POSITION, ID, (uint8_t) 20, goal_joint_position,(uint8_t) 1, &log);
+    if(stat){
+      ROS_INFO("Sync Write Goal Position Success");
+    }
+    else{
+      ROS_ERROR("Sync Write Goal Position Error : %s",log);
+      ros::shutdown();
+      return false;
+    }
+    res.status=true;
+    return true;
   }
   else{
-    ROS_ERROR("Sync Write Moving Speed : %s",log);
-    ros::shutdown();
-    return;
-  }
-
-  res= joint_controller_->syncWrite(SYNC_WRITE_HANDLER_FOR_GOAL_POSITION, ID, (uint8_t) 20, goal_joint_position,(uint8_t) 1, &log);
-  if(res){
-    ROS_INFO("Sync Write Goal Position Success");
-  }
-  else{
-    ROS_ERROR("Sync Write Goal Position Error : %s",log);
-    ros::shutdown();
-    return;
+    ROS_INFO("Dynamixel not finished moving");
+    res.status=false; 
+    return false;
   }
 }
 
@@ -300,13 +314,14 @@ int main(int argc, char **argv)
   ros::Rate loop_rate(ITERATION_FREQUENCY);
 //  ros::AsyncSpinner spinner(1);
 //  spinner.start();
-
-  while (ros::ok())
-  {
-  //  dynamixel_controller.control_loop();
-    ros::spinOnce();
-    loop_rate.sleep();
-  }
+  ROS_INFO("Dynamixel Server is Ready");
+  ros::spin();
+  // while (ros::ok())
+  // {
+  // //  dynamixel_controller.control_loop();
+  //   ros::spinOnce();
+  //   loop_rate.sleep();
+  // }
 
 //  ros::waitForShutdown();
 

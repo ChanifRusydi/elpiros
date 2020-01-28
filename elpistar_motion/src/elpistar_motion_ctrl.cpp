@@ -24,8 +24,9 @@ ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
   phi_ctrl.en= false;
   printf("%.2f, %.2f, %.2f, %.2f",phi_ctrl.Kp, phi_ctrl.Ki, phi_ctrl.Kd, phi_ctrl.SP);
 //  ros::shutdown();
-  initPublisher();
+  // initPublisher();
   initSubscriber();
+  initClient();
   ROS_INFO("elpistar_motion_controller : Init OK!");
 }
 
@@ -34,14 +35,18 @@ ElpistarMotionController::~ElpistarMotionController(){
   ros::shutdown();
 }
 
-void ElpistarMotionController::initPublisher(){
-  goal_joint_states_pub_ = node_handle_.advertise<sensor_msgs::JointState>(robot_name_+"/goal_joint_position",10);
+// void ElpistarMotionController::initPublisher(){
+//   goal_joint_states_pub_ = node_handle_.advertise<sensor_msgs::JointState>(robot_name_+"/goal_joint_position",10);
+// }
+void ElpistarMotionController::initClient(){
+  move_dxl_client_ = node_handle_.serviceClient<elpistar_msgs::DXLServer>(robot_name_ + "/move_dxl");
 }
 void ElpistarMotionController::initSubscriber(){
   position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &ElpistarMotionController::euler_pos_cb, this);
 }
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
+  elpistar_msgs::DXLServer move_dxl;
   // uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512}; walk_ready
   uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512}; //walk
   if(phi_ctrl.en){
@@ -69,13 +74,18 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
       dxl.position.push_back(gp[i]);
       dxl.velocity.push_back(speed[i]);
     }
-    goal_joint_states_pub_.publish(dxl);
+    move_dxl.request.jointstate=dxl;
+    while(!move_dxl_client_.call(move_dxl)){
+      move_dxl_client_.call(move_dxl);
+    }
+
     phi_ctrl.en=false;
   }
     printf("%7.2f\n",msg->phi);
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;
+  elpistar_msgs::DXLServer move_dxl;
   
   switch(type){
     case WALK:
@@ -498,7 +508,10 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
       break;
     }
   }
-  goal_joint_states_pub_.publish(dxl);
+  move_dxl.request.jointstate=dxl;
+  while(!move_dxl_client_.call(move_dxl)){
+    move_dxl_client_.call(move_dxl);
+  }
 }
   
 void ElpistarMotionController::walk(int step){

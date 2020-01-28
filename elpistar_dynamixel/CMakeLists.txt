@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   dynamixel_workbench_toolbox
   roscpp
   sensor_msgs
+  elpistar_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -55,9 +56,9 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
+#add_service_files(
 #   FILES
-#   Service1.srv
+#   DXLServer.srv
 #   Service2.srv
 # )
 
@@ -104,9 +105,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES elpistar_dynamixel
-#  CATKIN_DEPENDS cmake_modules dynamixel_workbench_msgs dynamixel_workbench_toolbox roscpp sensor_msgs
+#  CATKIN_DEPENDS message_runtime
 #  DEPENDS system_lib
 )
 
