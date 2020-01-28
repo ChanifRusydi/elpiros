@@ -47,6 +47,7 @@ void ElpistarMotionController::initSubscriber(){
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
   elpistar_msgs::DXLServer move_dxl;
+  bool stat;
   // uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512}; walk_ready
   uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512}; //walk
   if(phi_ctrl.en){
@@ -75,8 +76,9 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
       dxl.velocity.push_back(speed[i]);
     }
     move_dxl.request.jointstate=dxl;
-    while(!move_dxl_client_.call(move_dxl)){
-      move_dxl_client_.call(move_dxl);
+    stat=move_dxl_client_.call(move_dxl);
+    while(!stat){
+      stat=move_dxl_client_.call(move_dxl);
     }
 
     phi_ctrl.en=false;
@@ -86,7 +88,7 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;
   elpistar_msgs::DXLServer move_dxl;
-  
+  bool stat;
   switch(type){
     case WALK:
     {
@@ -508,9 +510,9 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
       break;
     }
   }
-  move_dxl.request.jointstate=dxl;
-  while(!move_dxl_client_.call(move_dxl)){
-    move_dxl_client_.call(move_dxl);
+  stat=move_dxl_client_.call(move_dxl);
+  while(!stat){
+    stat=move_dxl_client_.call(move_dxl);
   }
 }
   
