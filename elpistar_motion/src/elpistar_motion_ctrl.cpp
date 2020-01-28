@@ -556,7 +556,8 @@ int main(int argc, char **argv)
 //   {
     motion_controller.walk_ready();
     transition.sleep();
-    motion_controller.walk(10);
+    //motion_controller.walk(10);
+    
 //    motion_controller.front_standup();
 //    ros::spinOnce();
 //    loop.sleep();
