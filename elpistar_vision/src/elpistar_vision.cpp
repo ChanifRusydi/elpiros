@@ -9,7 +9,9 @@
 #include <opencv2/core.hpp>
 #include <image_transport/image_transport.h>
 #include <cv_bridge/cv_bridge.h>
- 
+#include <std_msgs/Int8.h>
+
+
 using namespace cv;
 using namespace std;
 
@@ -19,7 +21,10 @@ int main(int argc, char* argv[])
 
 
 	ros::init(argc, argv,"line_node");
+	ros::Publisher line_state_pub;
 	ros::NodeHandle nh;
+	line_state_pub  = nh.advertise<std_msgs::Int8>( "elpistar/line", 10);
+	std_msgs::Int8 line_state;
 	image_transport::ImageTransport it(nh);
 	image_transport::Publisher image_pub = it.advertise("test_cam/image_raw",1);
 	sensor_msgs::ImagePtr ros_img;
@@ -83,14 +88,17 @@ int main(int argc, char* argv[])
 			drawContours(crop, contours, -1,Scalar(0,255,0));
 			if (cx >= 120) {
 				status = "Kiri";
+				line_state.data=1;
 			}
-			if (cx < 120  && cx > 50) {
+			else if (cx < 120  && cx > 50) {
 				status = "Tengah";
+				line_state.data=2;
 			}
-			if(cx <= 50) {
+			else if(cx <= 50) {
 				status = "Kanan";
+				line_state.data=3;
 			}
-						
+			line_state_pub.publish(line_state);			
 			cout << "Centroid X: " << cx;
 			cout << " Centroid Y: " << cy;
 			cout << " Status: " << status << endl;
