@@ -37,7 +37,7 @@ class ElpistarMotionController{
   //ROS Service Client
   ros::ServiceClient move_dxl_client_;
   //Elpistar Motion Controller Parameter
-
+  int robot_y;
   std::string robot_name_;
 
   public:
