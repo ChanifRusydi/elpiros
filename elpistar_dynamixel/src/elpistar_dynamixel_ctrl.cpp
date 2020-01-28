@@ -245,6 +245,7 @@ void DynamixelController::goalJointPositionCallback(const sensor_msgs::JointStat
   int32_t speed[JOINT_NUM]={767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767,767};
   const char* log = NULL;
   bool res;
+  printf("GP called");
   for (auto const dxl:dynamixel_){
     goal_joint_position[dxl.second-1] = msg->position.at(dxl.second-1);
     ID[dxl.second-1] = dxl.second;
