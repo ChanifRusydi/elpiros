@@ -1,0 +1,55 @@
+<launch>
+  <!-- global argument --> 
+  <arg name="use_robot_name"         default="elpistar"/>
+  <arg name="node_start_delay" default="1.0" />  
+  <!-- argument for elpistar_dynamixel -->
+  <arg name="device_name"            default="/dev/ttyUSB0"/>
+  <arg name="baud_rate"              default="1000000"/>
+  <arg name="protocol_version"       default="1.0"/>
+  <arg name="joint_info"             default="$(find elpistar_dynamixel)/config/elpistar_joint.yaml"/>
+  <arg name="joint_controller"       default="position_mode"/>
+
+  <!-- argument for elpistar_motion -->
+  <arg name="phi_SP"                 default="2"/>
+  <arg name="phi_KP"                 default="0"/>
+  <arg name="phi_KI"                 default="0"/>
+  <arg name="phi_KD"                 default="0"/>
+  <arg name="phi_TS"                 default="0"/>
+  
+  <!-- argument for elpistar_imu -->  
+  <arg name="debug_en"         default="false"/>
+
+  <param name="robot_name"           value="$(arg use_robot_name)"/>
+    
+  <node name="elpistar_imu" pkg="elpistar_imu" type="elpistar_imu" required="true" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
+      <!--<rosparam file="$(find mypackage)/config/example.yaml" command="load" /> -->
+      <param name="frequency" type="int" value="10" />
+      <param name="frame_id" type="str" value="imu_link" />
+      <param name="ax" type="int" value="-3045" />
+      <param name="ay" type="int" value="-1660" />
+      <param name="az" type="int" value="1619" />
+      <param name="gx" type="int" value="60" />
+      <param name="gy" type="int" value="170" />
+      <param name="gz" type="int" value="14" />
+      <param name="ado" type="bool" value="false" />
+      <param name="debug" type="bool" value="$(arg debug_en)" />
+  </node>
+
+  <node pkg="elpistar_dynamixel" type="elpistar_dynamixel_ctrl" name="elpistar_dynamixel_controller" required="true" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' " >
+
+    <param name="device_name"          value="$(arg device_name)"/>
+    <param name="baud_rate"            value="$(arg baud_rate)"/>
+    <param name="protocol_version"     value="$(arg protocol_version)"/>
+    <param name="dynamixel_info"       value="$(arg joint_info)"/>
+    <param name="joint_controller"     value="$(arg joint_controller)"/>
+  </node>
+
+  <node pkg="elpistar_motion" type="elpistar_motion_ctrl" name="elpistar_motion_controller" required="true" output="screen" >
+      <param name="phi_SP"           value="$(arg phi_SP)"/>
+      <param name="phi_Kp"           value="$(arg phi_KP)"/>
+      <param name="phi_Ki"           value="$(arg phi_KI)"/>
+      <param name="phi_Kd"           value="$(arg phi_KD)"/>
+      <param name="phi_Ts"           value="$(arg phi_TS)"/>
+  </node>
+  
+</launch>

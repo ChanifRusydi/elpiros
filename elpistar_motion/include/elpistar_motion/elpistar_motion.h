@@ -21,6 +21,7 @@ typedef struct PID{
    float error,last_error,SP;
    float u;
    bool en;
+   bool walk_r;
 };
 class ElpistarMotionController{
  private:

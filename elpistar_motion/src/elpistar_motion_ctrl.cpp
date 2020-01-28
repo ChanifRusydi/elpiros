@@ -47,9 +47,17 @@ void ElpistarMotionController::initSubscriber(){
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
   elpistar_msgs::DXLServer move_dxl;
+  ros::Rate refresh(10);
   bool stat;
-  // uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512}; walk_ready
-  uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512}; //walk
+  uint16_t gp[20];
+  if(phi_ctrl.walk_r){
+    uint16_t goal[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512}; //walk_ready
+    for(int i=0; i<20; i++) gp[i]=goal[i];
+  }
+  else{
+    uint16_t goal[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512}; //walk
+    for(int i=0; i<20; i++) gp[i]=goal[i];
+  }
   if(phi_ctrl.en){
     float phi=msg->phi;
     phi_ctrl.error=phi_ctrl.SP-phi;
@@ -77,17 +85,20 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
     }
     move_dxl.request.jointstate=dxl;
     stat=move_dxl_client_.call(move_dxl);
-    while(!stat){
+    /*while(!stat){
+      refresh.sleep();
       stat=move_dxl_client_.call(move_dxl);
-    }
-
+    }*/
+    printf("Kontrol Aktif");
     phi_ctrl.en=false;
+    phi_ctrl.walk_r=false;
   }
     printf("%7.2f\n",msg->phi);
 }
 void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   sensor_msgs::JointState dxl;
   elpistar_msgs::DXLServer move_dxl;
+  ros::Rate refresh(10);
   bool stat;
   switch(type){
     case WALK:
@@ -323,6 +334,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           for(uint8_t i=0; i<20; i++){
             dxl.position.push_back(gp[i]);
           }
+          phi_ctrl.walk_r=true;
           phi_ctrl.en=true;
 	  break;
 	}
@@ -510,10 +522,12 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
       break;
     }
   }
+  move_dxl.request.jointstate=dxl;
   stat=move_dxl_client_.call(move_dxl);
-  while(!stat){
+  /*while(!stat){
+    refresh.sleep();
     stat=move_dxl_client_.call(move_dxl);
-  }
+  }*/
 }
   
 void ElpistarMotionController::walk(int step){
@@ -530,12 +544,8 @@ void ElpistarMotionController::walk(int step){
   }
 }
 void ElpistarMotionController::walk_ready(){
-  ros::Rate loop_rate(20);
-  for(int count=0; count<5; count++){
     motion(WALK,100);
     ros::spinOnce();
-    loop_rate.sleep();
-  }
 }
 void ElpistarMotionController::front_standup(){
   uint8_t phase=4;
@@ -571,7 +581,7 @@ int main(int argc, char **argv)
 //   {
     motion_controller.walk_ready();
     transition.sleep();
-    //motion_controller.walk(10);
+    motion_controller.walk(10);
     
 //    motion_controller.front_standup();
 //    ros::spinOnce();

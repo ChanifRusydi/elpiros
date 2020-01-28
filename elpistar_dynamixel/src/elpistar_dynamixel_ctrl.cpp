@@ -157,7 +157,12 @@ bool DynamixelController::initDynamixels(void)
           bool result = joint_controller_->itemWrite((uint8_t)dxl.second, info.second.item_name.c_str(), info.second.value, &log);
           if (result == false)
           {
-            ROS_ERROR("%s", log);
+            if(log=="[RxPacketError] Out of range error!"){
+	      ROS_ERROR("ABCD");
+	    }
+            else
+              ROS_ERROR("%s", log);
+	    
             ROS_ERROR("Failed to write value[%d] on items[%s] to Dynamixel[Name : %s, ID : %d]", info.second.value, info.second.item_name.c_str(), dxl.first.c_str(), dxl.second);
             return false;
           }
@@ -256,12 +261,12 @@ bool DynamixelController::move_dxl(elpistar_msgs::DXLServer::Request &req,
     int32_t data;
     goal_joint_position[dxl.second-1] = req.jointstate.position.at(dxl.second-1);
     ID[dxl.second-1] = dxl.second;
-    joint_controller_->itemRead(dxl.second, "Moving", &data);
+    //joint_controller_->itemRead(dxl.second, "Moving", &data);
     if(data==1){
       is_moving=true;
     }
   }
-  if(!req.jointstate.velocity.empty()){
+  if(req.jointstate.velocity.size()==20){
     for(auto const dxl:dynamixel_){
       speed[dxl.second-1]=req.jointstate.velocity.at(dxl.second-1);
     }
@@ -271,7 +276,7 @@ bool DynamixelController::move_dxl(elpistar_msgs::DXLServer::Request &req,
   if(!is_moving){
     stat= joint_controller_->syncWrite(1, ID, (uint8_t) 20, speed,(uint8_t) 1, &log);
     if(stat){
-      ROS_INFO("Sync Write Moving Speed Success");
+//      ROS_INFO("Sync Write Moving Speed Success");
     }
     else{
       ROS_ERROR("Sync Write Moving Speed : %s",log);
@@ -281,7 +286,7 @@ bool DynamixelController::move_dxl(elpistar_msgs::DXLServer::Request &req,
 
     stat= joint_controller_->syncWrite(SYNC_WRITE_HANDLER_FOR_GOAL_POSITION, ID, (uint8_t) 20, goal_joint_position,(uint8_t) 1, &log);
     if(stat){
-      ROS_INFO("Sync Write Goal Position Success");
+//      ROS_INFO("Sync Write Goal Position Success");
     }
     else{
       ROS_ERROR("Sync Write Goal Position Error : %s",log);
@@ -292,7 +297,7 @@ bool DynamixelController::move_dxl(elpistar_msgs::DXLServer::Request &req,
     return true;
   }
   else{
-    ROS_INFO("Dynamixel not finished moving");
+  //  ROS_INFO("Dynamixel not finished moving");
     res.status=false; 
     return false;
   }
