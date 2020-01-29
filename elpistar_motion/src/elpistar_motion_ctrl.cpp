@@ -799,7 +799,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 1:{
-          uint16_t gp[20]={235,788,336,744,462,561,419,604,519,527,336,693,245,899,647,385,519,527,372,512};      
+          uint16_t gp[20]={235,788,279,744,462,561,419,604,519,527,336,693,245,899,647,385,519,527,372,512};      
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -811,7 +811,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 2:{
-          uint16_t gp[20]={235,788,521,534,462,561,417,606,521,534,340,696,250,777,646,386,524,533,372,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,417,606,521,534,340,696,250,777,646,386,524,533,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -823,7 +823,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 3:{
-          uint16_t gp[20]={235,788,521,534,462,561,413,610,515,543,345,703,257,790,643,380,529,538,372,512};        
+          uint16_t gp[20]={235,788,279,744,462,561,413,610,515,543,345,703,257,790,643,380,529,538,372,512};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -835,7 +835,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 4:{
-          uint16_t gp[20]={235,788,521,534,462,561,406,617,506,551,348,712,263,807,641,372,577,542,372,512};          
+          uint16_t gp[20]={235,788,279,744,462,561,406,617,506,551,348,712,263,807,641,372,577,542,372,512};          
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -847,7 +847,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 5:{
-          uint16_t gp[20]={235,788,521,534,462,561,398,625,498,558,350,718,267,821,638,365,534,546,372,512};        
+          uint16_t gp[20]={235,788,279,744,462,561,398,625,498,558,350,718,267,821,638,365,534,546,372,512};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -859,7 +859,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 6:{
-          uint16_t gp[20]={235,788,521,235,788,521,534,462,561,388,635,495,561,349,719,269,826,636,372,512};         
+          uint16_t gp[20]={235,788,279,744,788,521,534,462,561,388,635,495,561,349,719,269,826,636,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -871,7 +871,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 7:{
-          uint16_t gp[20]={235,788,521,534,462,561,379,644,498,559,347,714,267,821,636,361,535,546,372,512};          
+          uint16_t gp[20]={235,788,279,744,462,561,379,644,498,559,347,714,267,821,636,361,535,546,372,512};          
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -883,7 +883,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 8:{
-          uint16_t gp[20]={235,788,521,534,462,561,370,653,506,552,344,706,263,807,637,366,533,543,372,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,370,653,506,552,344,706,263,807,637,366,533,543,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -895,7 +895,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 9:{
-          uint16_t gp[20]={235,788,521,534,462,561,363,660,516,544,340,696,257,790,639,373,529,539,372,512};
+          uint16_t gp[20]={235,788,279,744,462,561,363,660,516,544,340,696,257,790,639,373,529,539,372,512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -907,7 +907,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 10:{
-          uint16_t gp[20]={235,788,521,534,462,561,359,664,521,535,337,689,250,777,642,379,525,534,372,512};           
+          uint16_t gp[20]={235,788,279,744,462,561,359,664,521,535,337,689,250,777,642,379,525,534,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -919,7 +919,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 11:{
-          uint16_t gp[20]={235,788,521,534,462,561,358,666,520,528,334,688,245,776,644,380,520,528,372,512};           
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,520,528,334,688,245,776,644,380,520,528,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -931,7 +931,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 12:{
-          uint16_t gp[20]={235,788,521,534,462,561,358,666,514,522,332,691,241,781,646,377,514,522,372,512};           
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,514,522,332,691,241,781,646,377,514,522,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -943,7 +943,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 13:{
-          uint16_t gp[20]={491,788,521,534,462,561,358,666,507,516,331,692,240,783,647,376,507,516,372,512};         
+          uint16_t gp[20]={491,788,279,744,462,561,358,666,507,516,331,692,240,783,647,376,507,516,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -1501,7 +1501,7 @@ void ElpistarMotionController::spin_r(int step){
   ros::Rate step_time(2);
   for(int count=0; count<step; count++){
     for(int i=0; i<phase; i++){
-      motion(SPIN_L,i);
+      motion(SPIN_R,i);
       ros::spinOnce();
       loop_rate.sleep();
     }
@@ -1515,7 +1515,7 @@ void ElpistarMotionController::spin_l(int step){
   ros::Rate step_time(2);
   for(int count=0; count<step; count++){
     for(int i=0; i<phase; i++){
-      motion(SPIN_R,i);
+      motion(SPIN_L,i);
       ros::spinOnce();
       loop_rate.sleep();
     }
