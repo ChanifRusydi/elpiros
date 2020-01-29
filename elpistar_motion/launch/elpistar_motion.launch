@@ -10,7 +10,7 @@
   <arg name="phi_KI"                 default="0"/>
   <arg name="phi_KD"                 default="0"/>
   <arg name="phi_TS"                 default="0"/>  
-  
+  <arg name="y"			     default="0"/>  
   <param name="robot_name"           value="$(arg use_robot_name)"/>
     
   <node pkg="elpistar_motion" type="elpistar_motion_ctrl" name="elpistar_motion_controller" required="true" output="screen">
@@ -19,5 +19,6 @@
       <param name="phi_Ki"           value="$(arg phi_KI)"/>
       <param name="phi_Kd"           value="$(arg phi_KD)"/>
       <param name="phi_Ts"           value="$(arg phi_TS)"/>
+      <param name="robot_y"	     value="$(arg y)"/>
   </node>
 </launch>
