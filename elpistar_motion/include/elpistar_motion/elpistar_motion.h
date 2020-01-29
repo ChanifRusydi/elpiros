@@ -14,6 +14,8 @@
 #define FRONT_STANDUP 1
 #define BACK_STANDUP 2
 #define CONTROL 3
+#define SPIN_R 4
+#define SPIN_L 5
 
 typedef struct PID{
    float Kp,Ki,Kd,Ts;
@@ -48,6 +50,9 @@ class ElpistarMotionController{
    void stop();
    void front_standup();
    void back_standup();
+   void back();
+   void spin_r(int step);
+   void spin_l(int step)
    void euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg);   
   private:
    void initPublisher();
