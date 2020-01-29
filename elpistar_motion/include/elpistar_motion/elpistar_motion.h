@@ -52,7 +52,7 @@ class ElpistarMotionController{
    void back_standup();
    void back();
    void spin_r(int step);
-   void spin_l(int step)
+   void spin_l(int step);
    void euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg);   
   private:
    void initPublisher();

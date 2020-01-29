@@ -107,19 +107,18 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
   ros::Rate refresh(10);
   bool stat;
   switch(type){
-    case WALK:
-    {
+    case WALK:{
       switch(pn){
         case 0:
         {
           uint16_t gp[20]={169,722,279,744,462,561,358,666,513,522,297,665,246,769,621,348,513,522,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -128,11 +127,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={166,719,279,744,462,561,358,666,518,527,303,656,248,761,625,348,518,527,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -141,11 +140,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={167,720,279,744,462,561,358,666,519,533,309,655,252,761,628,346,523,532,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -154,11 +153,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={171,724,279,744,462,561,358,666,513,541,316,667,257,778,629,341,527,537,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -167,11 +166,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={179,732,279,744,462,561,358,666,504,550,322,687,262,801,630,338,530,541,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -180,11 +179,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={189,742,279,744,462,561,358,666,496,556,327,709,266,820,631,342,532,543,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -193,11 +192,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={201,754,279,744,462,561,358,666,493,558,330,729,267,827,633,354,533,544,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -206,11 +205,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={215,768,279,744,462,561,358,666,496,556,332,741,266,820,636,374,532,543,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -219,11 +218,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={230,783,279,744,462,561,358,666,504,550,333,745,262,801,641,396,530,541,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -232,11 +231,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={246,799,279,744,462,561,358,666,513,541,334,742,257,778,647,416,527,537,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -245,11 +244,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={260,813,279,744,462,561,358,666,519,533,335,737,252,761,654,428,523,532,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -258,11 +257,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={274,827,279,744,462,561,358,666,518,527,338,735,248,761,660,427,518,527,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -271,11 +270,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={285,838,279,744,462,561,358,666,513,522,342,735,246,769,666,418,513,522,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -284,11 +283,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={294,847,279,744,462,561,358,666,507,516,349,731,248,775,671,409,507,516,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -297,11 +296,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={300,853,279,744,462,561,358,666,501,510,358,726,254,777,675,402,501,510,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -310,11 +309,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={303,856,279,744,462,561,358,666,496,505,367,720,262,775,675,398,496,505,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -323,11 +322,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={302,855,279,744,462,561,358,666,490,504,368,714,262,771,677,395,491,500,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -336,11 +335,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={298,851,279,744,462,561,358,666,482,510,356,707,245,766,682,394,486,496,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -349,11 +348,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={290,843,279,744,462,561,358,666,473,519,336,701,222,761,685,393,482,493,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -362,11 +361,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={280,833,279,744,462,561,358,666,467,527,314,696,203,757,681,392,480,491,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -375,11 +374,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={268,821,279,744,462,561,358,666,465,530,294,693,196,756,669,390,479,490,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -388,11 +387,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={254,807,279,744,462,561,358,666,467,527,282,691,203,757,649,387,480,491,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -401,11 +400,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={239,792,279,744,462,561,358,666,473,519,278,690,222,761,627,382,482,493,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -414,11 +413,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={223,776,279,744,462,561,358,666,482,510,281,689,245,766,607,376,486,496,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -427,11 +426,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={209,762,279,744,462,561,358,666,490,504,286,688,262,771,595,369,491,500,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -440,11 +439,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={195,748,279,744,462,561,358,666,496,505,288,685,262,775,596,363,496,505,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -453,11 +452,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={184,737,279,744,462,561,358,666,501,510,288,681,254,777,605,357,501,510,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -466,11 +465,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           phi_ctrl.en=true;
           break;
@@ -479,19 +478,20 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,346,677,240,783,647,376,507,516,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           phi_ctrl.walk_r=true;
           phi_ctrl.en=true;
-	  break;
-	}
+	        break;
+	      }
       }
       break;
     }
+
     case FRONT_STANDUP:{
       switch(pn){
         case 0:{
@@ -499,11 +499,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -513,11 +513,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -527,11 +527,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={255,  255,  255,  255,  255,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -541,11 +541,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  255,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -555,11 +555,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -569,11 +569,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={48,  48,  96,  96,  96,  96,  96,  96,  96,  96,  48,  48,  48,  48,  48,  48,  96,  96,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -583,11 +583,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={56,  56,  56,  56,  56,  56,  56,  56,  56,  56,  85,  85,  66,  66,  66,  66,  96,  96,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -597,11 +597,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t speed[20]={48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  48,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
             dxl.velocity.push_back(gp[i]);
           }
           break;
@@ -609,17 +609,18 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
       }
       break;
     }
+
     case BACK_STANDUP:{
       switch(pn){
         case 0:{
           uint16_t gp[20]={0, 1023, 509, 514, 462, 561, 353, 666, 507, 516, 341, 682, 128, 895, 443, 580, 507, 516, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -627,11 +628,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={16, 1007, 509, 514, 335, 688, 353, 666, 507, 516, 341, 682, 128, 895, 443, 580, 507, 516, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -639,11 +640,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={16, 1007, 509, 514, 175, 848, 353, 666, 507, 516, 283, 740, 128, 895, 459, 564, 507, 516, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -651,11 +652,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={16, 1007, 253, 770, 462, 561, 353, 666, 507, 516, 58, 965, 128, 895, 459, 564, 507, 516, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -663,11 +664,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={192, 831, 253, 770, 462, 561, 497, 602, 507, 516, 58, 965, 128, 895, 459, 564, 507, 516, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -675,11 +676,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={192, 831, 253, 770, 462, 561, 497, 602, 507, 516, 58, 885, 831, 895, 459, 564, 507, 580, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -687,11 +688,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={192, 831, 253, 770, 462, 561, 497, 602, 507, 516, 58, 885, 831, 895, 927, 468, 545, 580, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -699,11 +700,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={160, 831, 253, 770, 462, 561, 497, 602, 507, 516, 21, 805, 80, 895, 511, 460, 562, 580, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -711,11 +712,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={160, 831, 306, 770, 462, 561, 497, 602, 507, 516, 21, 768, 80, 920, 545, 323, 562, 580, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -723,11 +724,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={160, 831, 306, 770, 462, 561, 497, 602, 507, 516, 112, 768, 102, 920, 545, 323, 511, 580, 512, 512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -735,11 +736,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={442, 581, 264, 759, 454, 569, 354, 669, 512, 511, 378, 645, 102, 920, 545, 323, 512, 511, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -747,11 +748,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={378, 645, 264, 759, 454, 569, 354, 669, 512, 511, 80, 943, 86, 937, 609, 414, 512, 511, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -759,11 +760,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235, 788, 279, 744, 462, 561, 358, 666, 507, 516, 277, 746, 240, 783, 619, 404, 512, 511, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -771,11 +772,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235, 788, 279, 744, 462, 561, 358, 666, 507, 516, 333, 690, 240, 783, 647, 376, 507, 516, 512, 512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+            dxl.position.push_back(gp[i]-robot_y);
+          else if(i==11)
+            dxl.position.push_back(gp[i]+robot_y);
+          else
+            dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -783,17 +784,17 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
       break;
     }
 
- case SPIN_R:{
+    case SPIN_R:{
       switch(pn){
         case 0:{
           uint16_t gp[20]={235,788,279,744,462,561,419,604,513,522,333,694,241,781,647,381,513,522,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+            dxl.position.push_back(gp[i]-robot_y);
+          else if(i==11)
+            dxl.position.push_back(gp[i]+robot_y);
+          else
+            dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -801,11 +802,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,336,744,462,561,419,604,519,527,336,693,245,899,647,385,519,527,372,512};      
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -813,11 +814,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,417,606,521,534,340,696,250,777,646,386,524,533,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -825,11 +826,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,413,610,515,543,345,703,257,790,643,380,529,538,372,512};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -837,11 +838,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,406,617,506,551,348,712,263,807,641,372,577,542,372,512};          
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -849,11 +850,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,398,625,498,558,350,718,267,821,638,365,534,546,372,512};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -861,11 +862,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,235,788,521,534,462,561,388,635,495,561,349,719,269,826,636,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -873,11 +874,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,379,644,498,559,347,714,267,821,636,361,535,546,372,512};          
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -885,11 +886,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,370,653,506,552,344,706,263,807,637,366,533,543,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -897,11 +898,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,363,660,516,544,340,696,257,790,639,373,529,539,372,512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -909,11 +910,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,359,664,521,535,337,689,250,777,642,379,525,534,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -921,11 +922,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,358,666,520,528,334,688,245,776,644,380,520,528,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -933,11 +934,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,521,534,462,561,358,666,514,522,332,691,241,781,646,377,514,522,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -945,11 +946,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={491,788,521,534,462,561,358,666,507,516,331,692,240,783,647,376,507,516,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -957,11 +958,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
          uint16_t gp[20]={235,788,279,744,462,561,358,666,501,509,332,691,242,782,646,377,501,509,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -969,11 +970,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,358,666,495,503,335,689,247,778,643,379,495,503,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -981,11 +982,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,359,664,488,502,334,686,246,773,644,381,489,498,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -993,11 +994,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,363,660,479,507,327,683,233,766,650,384,484,494,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1005,11 +1006,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,370,653,471,517,317,679,216,760,657,386,480,490,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1017,11 +1018,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,379,644,464,525,309,676,202,756,662,387,477,488,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1029,23 +1030,23 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,388,635,462,528,304,674,197,242,662,387,476,488,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
         case 21:{
-          uint16_t gp[20]={235,788,279,744,462,561,398,625,465,525,305,673,202,756,658,385,477,489,516,372,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,398,625,465,525,305,673,202,756,658,385,477,489,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1053,11 +1054,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,406,617,472,517,311,675,216,760,651,382,481,491,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1065,11 +1066,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,413,610,480,508,320,678,233,766,643,380,485,494,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1077,11 +1078,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,417,606,489,502,327,683,246,773,637,377,490,499,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1089,11 +1090,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,496,504,330,687,247,778,638,376,496,504,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1101,11 +1102,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,501,510,329,690,242,782,642,376,501,510,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1113,29 +1114,31 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,507,516,330,693,240,783,645,378,507,516,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
     
 
       }
+      break;
+    }
 
-      case SPIN_L:{
+    case SPIN_L:{
       switch(pn){
         case 0:{
           uint16_t gp[20]={235,788,279,744,462,561,358,666,514,522,322,701,241,781,646,377,514,522,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1143,11 +1146,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,358,666,520,528,324,698,245,776,644,380,520,528,372,512};      
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1155,11 +1158,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,359,664,521,535,327,699,250,777,642,379,525,534,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1167,11 +1170,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,363,660,516,544,330,706,257,790,639,373,529,539,372,512};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1179,11 +1182,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,370,653,506,552,334,716,263,807,637,366,533,543,372,512};          
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1191,11 +1194,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,379,644,498,754,337,724,267,821,636,361,535,546,372,512};        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1203,11 +1206,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,388,635,495,561,339,729,269,826,636,361,535,547,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1215,11 +1218,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,398,625,498,558,340,728,267,821,638,365,534,546,372,512};          
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1227,11 +1230,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,406,617,506,551,338,722,263,807,641,372,532,542,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1239,11 +1242,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,413,610,515,543,335,713,257,790,643,380,529,538,372,512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1251,11 +1254,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,417,606,521,534,330,706,250,777,646,386,524,533,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1263,11 +1266,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,519,527,326,703,245,776,647,385,524,533,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1275,11 +1278,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,513,522,323,704,241,781,647,381,513,522,372,512};           
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1287,23 +1290,23 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,507,516,320,703,240,783,645,378,507,516,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
         case 14:{
-         uint16_t gp[20]={235,788,279,744,462,561,419,604,501,510,319,700,242,782,642,376,501,510,372,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,419,604,501,510,319,700,242,782,642,376,501,510,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1311,11 +1314,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,419,604,496,504,320,697,247,778,638,376,496,504,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1323,11 +1326,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,417,606,489,502,317,693,246,773,637,377,490,499,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1335,11 +1338,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,413,610,480,508,310,688,233,766,643,380,485,494,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1347,11 +1350,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,406,617,472,517,301,685,216,760,651,382,481,491,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1359,11 +1362,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,398,625,465,525,295,683,202,756,658,385,477,489,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1371,23 +1374,23 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,388,635,462,528,294,664,197,754,662,387,476,488,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
         case 21:{
-         uint16_t gp[20]={235,788,279,744,462,561,379,644,464,525,299,686,202,756,662,387,477,488,372,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,379,644,464,525,299,686,202,756,662,387,477,488,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1395,11 +1398,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,370,653,471,517,307,689,216,760,657,641,480,490,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1407,11 +1410,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,363,660,479,507,317,693,233,766,650,384,484,494,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1419,11 +1422,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,359,664,488,502,324,696,246,773,644,381,489,498,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1431,11 +1434,11 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,358,666,495,503,325,699,247,778,643,379,495,503,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
@@ -1443,23 +1446,23 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           uint16_t gp[20]={235,788,279,744,462,561,358,666,501,509,322,701,242,782,646,377,501,509,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
         case 27:{
-         uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,321,702,240,783,647,376,507,516,372,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,321,702,240,783,647,376,507,516,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
-        dxl.position.push_back(gp[i]-robot_y);
-      else if(i==11)
-        dxl.position.push_back(gp[i]+robot_y);
-      else
-        dxl.position.push_back(gp[i]);
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
           }
           break;
         }
