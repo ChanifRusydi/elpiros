@@ -5,9 +5,11 @@
 
 #include <string>
 #include <vector>
+#include <std_srvs/Trigger.h>
 #include <sensor_msgs/JointState.h>
 #include <elpistar_imu/EulerIMU.h>
 #include <elpistar_msgs/DXLServer.h>
+
 
 #define WALK_FREQUENCY (15)
 #define WALK 0
@@ -44,6 +46,9 @@ class ElpistarMotionController{
 
   //ROS Service Client
   ros::ServiceClient move_dxl_client_;
+  ros::ServiceClient camera_client_;
+  std_srvs::Trigger camera_state_;
+
   //Elpistar Motion Controller Parameter
   int robot_y;
   std::string robot_name_;
@@ -51,6 +56,7 @@ class ElpistarMotionController{
   public:
    ElpistarMotionController();
    ~ElpistarMotionController();
+   void robotControl();
    void walk(int step);
    void walk_ready();
    void stop();
@@ -69,6 +75,7 @@ class ElpistarMotionController{
    void initPublisher();
    void initSubscriber();
    void initClient();
+   
    PID phi_ctrl;
    void motion(uint8_t type, uint8_t pn);
 };

@@ -36,13 +36,22 @@ ElpistarMotionController::~ElpistarMotionController(){
   stop();
   ros::shutdown();
 }
-
+void ElpistarMotionController::robotControl(){
+  ros::Rate transition(0.2);
+  walk_ready();
+  transition.sleep();
+  if(camera_client_.call(camera_state_)){
+    ROS_INFO("%s",camera_state_.response.message);
+  }
+}
 // void ElpistarMotionController::initPublisher(){
 //   goal_joint_states_pub_ = node_handle_.advertise<sensor_msgs::JointState>(robot_name_+"/goal_joint_position",10);
 // }
 void ElpistarMotionController::initClient(){
   move_dxl_client_ = node_handle_.serviceClient<elpistar_msgs::DXLServer>(robot_name_ + "/move_dxl");
+  camera_client_ = node_handle_.serviceClient<std_srvs::Trigger>(robot_name_ + "/line");
 }
+
 void ElpistarMotionController::initSubscriber(){
   position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &ElpistarMotionController::euler_pos_cb, this);
 }
@@ -2428,6 +2437,7 @@ void ElpistarMotionController::shift_l(int step){
     step_time.sleep();
   }
 }
+
 void ElpistarMotionController::spin_r(int step){
   uint8_t phase=28;
   ros::Rate loop_rate(28);
@@ -2496,6 +2506,7 @@ void ElpistarMotionController::back_standup(){
     loop_rate.sleep();
   }
 }
+
 void ElpistarMotionController::stop(){}
 
 int main(int argc, char **argv)
@@ -2503,21 +2514,22 @@ int main(int argc, char **argv)
   // Init ROS node
   ros::init(argc, argv, "elpistar_dynamixel_controller");
   ElpistarMotionController motion_controller;
-  ros::Rate transition(0.2);
+  
 
-//  ros::Rate loop(5);
+  ros::Rate loop(5);
   //ros::spin();
   // ros::shutdown();
-//   while (ros::ok())
-//   {
-    motion_controller.walk_ready();
-    transition.sleep();
+  while (ros::ok())
+  {
+    motion_controller.robotControl();
+    // motion_controller.walk_ready();
+    
 //    motion_controller.walk(30);
 //    motion_controller.spin_r(3);  
-    motion_controller.front_standup();
-//    ros::spinOnce();
-//    loop.sleep();
-//   }
+    // motion_controller.front_standup();
+    ros::spinOnce();
+    loop.sleep();
+  }
 
   return 0;
 }
