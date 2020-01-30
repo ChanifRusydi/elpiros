@@ -2145,7 +2145,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 27:{
-          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,319,704,240,783,647,376,507,516,512};         
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,319,704,240,783,647,376,507,512,372,512};         
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -2286,7 +2286,10 @@ int main(int argc, char **argv)
     transition.sleep();
 //    motion_controller.walk(30);
 //    motion_controller.spin_r(3);  
-    motion_controller.front_standup();
+//    motion_controller.front_standup();
+    motion_controller.shift_r(3);
+//    transition.sleep();
+//    motion_controller.shift_l(10);
 //    ros::spinOnce();
 //    loop.sleep();
 //   }
