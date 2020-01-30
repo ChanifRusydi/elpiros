@@ -1,4 +1,5 @@
 #include <elpistar_motion/elpistar_motion.h>
+
 int mapd(int x, int min, int max)
 {
   if(x<=max){
@@ -2328,7 +2329,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           
           uint16_t gp[20]={182,841,294,729,490,533,353,670,508,515,268,755,71,952,753,270,508,515,512,512};
 
-          uint16_t gp[20]={72,72,72,72,72,72,72,72,72,72,120,120,120,120,120,120,72,72,512,512};
+          uint16_t speed[20]={72,72,72,72,72,72,72,72,72,72,120,120,120,120,120,120,72,72,512,512};
        
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
@@ -2353,7 +2354,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
             uint16_t gp[20]={182,841,294,729,490,533,353,670,508,515,268,755,71,952,753,270,508,515,512,512};
 
 
-            uint16_t gp[20]={48,48,48,48,48,48,48,48,48,48,78,78,78,78,78,78,48,48,512,512};
+            uint16_t speed[20]={48,48,48,48,48,48,48,48,48,48,78,78,78,78,78,78,48,48,512,512};
 
         
             for(uint8_t i=0; i<20; i++){
@@ -2467,8 +2468,8 @@ void ElpistarMotionController::front_standup(){
     motion(FRONT_STANDUP_OLD,i);
     ros::spinOnce();
     loop_rate.sleep();
-   // if(i==3)
-    // delay.sleep();
+    if(i==3)
+     delay.sleep();
   }
 }
 
