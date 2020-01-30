@@ -524,7 +524,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
         }
         case 2:{
           uint16_t gp[20]={611, 412, 580, 491, 107, 868, 353, 670, 508, 515, 346, 677, 282, 741, 617, 406, 508, 515, 512, 512};           
-          uint16_t speed[20]={255,  255,  255,  255,  255,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  512,  512};
+          uint16_t speed[20]={255,  255,  255,  255,  255,  255,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  170,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
               dxl.position.push_back(gp[i]-robot_y);
@@ -551,7 +551,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 4:{
-          uint16_t gp[20]={407, 616, 264, 759, 454, 569, 354, 658, 512, 511, 80, 943, 38, 985, 705, 318, 512, 511, 512, 512};           
+          uint16_t gp[20]={407, 616, 264, 759, 454, 569, 354, 669, 512, 511, 80, 943, 38, 985, 705, 318, 512, 511, 512, 512};           
           uint16_t speed[20]={96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  96,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
@@ -565,7 +565,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 5:{
-          uint16_t gp[20]={378, 645, 264, 759, 454, 569, 354, 658, 512, 511, 80, 943, 86, 937, 609, 414, 512, 511, 512, 512};           
+          uint16_t gp[20]={378, 645, 264, 759, 454, 569, 354, 669, 512, 511, 80, 943, 86, 937, 609, 414, 512, 511, 512, 512};           
           uint16_t speed[20]={48,  48,  96,  96,  96,  96,  96,  96,  96,  96,  48,  48,  48,  48,  48,  48,  96,  96,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
@@ -579,7 +579,7 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
           break;
         }
         case 6:{
-          uint16_t gp[20]={235, 788, 279, 744, 462, 561, 358, 666, 507, 516, 277, 746, 240, 783, 519, 399, 512, 511, 512, 512};           
+          uint16_t gp[20]={235, 788, 279, 744, 462, 561, 358, 666, 507, 516, 277, 746, 240, 783, 624, 399, 512, 511, 512, 512};           
           uint16_t speed[20]={56,  56,  56,  56,  56,  56,  56,  56,  56,  56,  85,  85,  66,  66,  66,  66,  96,  96,  512,  512};
           for(uint8_t i=0; i<20; i++){
             if(i==10 )
@@ -1529,11 +1529,14 @@ void ElpistarMotionController::walk_ready(){
 }
 void ElpistarMotionController::front_standup(){
   uint8_t phase=4;
-  ros::Rate loop_rate(2);
+  ros::Rate loop_rate(5);
+  ros::Rate delay(0.1);
   for(int i=0; i<phase; i++){
     motion(FRONT_STANDUP,i);
     ros::spinOnce();
     loop_rate.sleep();
+    if(i==3)
+     delay.sleep();
   }
 }
 void ElpistarMotionController::back_standup(){
@@ -1562,8 +1565,8 @@ int main(int argc, char **argv)
     motion_controller.walk_ready();
     transition.sleep();
 //    motion_controller.walk(30);
-    motion_controller.spin_l(3);  
-//    motion_controller.front_standup();
+//    motion_controller.spin_r(3);  
+    motion_controller.front_standup();
 //    ros::spinOnce();
 //    loop.sleep();
 //   }
