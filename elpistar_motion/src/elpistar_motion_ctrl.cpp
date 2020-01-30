@@ -1472,6 +1472,698 @@ void ElpistarMotionController::motion(uint8_t type, uint8_t pn){
       break;
     }
 
+
+    case SHIFT_R:{
+      switch(pn){
+        case 0:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,479,559,325,692,251,759,641,388,479,559,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 1:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,487,566,324,686,250,747,642,394,487,566,372,512};      
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 2:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,491,573,347,684,251,743,641,396,495,572,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 3:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,489,581,326,646,254,756,640,390,503,576,372,512};        
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 4:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,485,587,328,700,258,776,638,380,511,578,372,512};          
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 5:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,482,590,330,710,262,795,636,370,519,577,372,512};        
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 6:{
+          uint16_t gp[20]={235,788,279,235,788,279,744,462,485,587,331,715,264,806,635,365,525,573,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 7:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,493,579,332,715,265,806,634,365,529,566,372,512};          
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 8:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,506,567,330,711,262,798,636,369,532,557,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 9:{
+         uint16_t gp[20]={235,788,279,744,462,561,358,666,518,553,328,705,258,785,638,375,532,548,372,512};
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 10:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,525,540,325,700,251,775,641,380,529,539,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 11:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,523,531,322,700,245,775,644,380,523,531,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 12:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,515,524,320,702,241,780,646,378,515,524,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 13:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,319,704,240,783,647,376,507,516,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 14:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,499,508,321,703,243,782,645,377,499,508,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 15:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,492,500,323,701,248,778,643,379,492,500,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 16:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,483,498,323,698,248,772,643,382,484,494,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 17:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,470,505,318,695,238,765,648,385,475,491,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 18:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,456,517,312,693,225,761,654,387,466,491,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 19:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,444,530,308,691,217,758,658,389,457,494,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 20:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,436,538,308,692,217,759,658,388,450,498,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 21:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,433,541,313,693,228,761,653,387,446,504,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 22:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,436,538,323,695,247,765,643,385,445,512,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 23:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,442,534,333,697,267,769,633,383,447,520,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 24:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,450,532,339,698,280,772,627,382,451,528,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 25:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,457,536,337,699,276,773,629,381,457,536,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 26:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,464,544,331,698,264,772,635,382,464,544,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 27:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,321,702,240,783,647,376,507,516,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+    
+
+      }
+      break;
+    }
+
+
+    case SHIFT_L:{
+      switch(pn){
+        case 0:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,515,524,320,702,241,780,646,378,515,524,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 1:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,523,531,322,700,245,775,644,380,523,531,372,512};      
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 2:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,525,540,325,700,251,775,641,380,529,539,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 3:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,518,553,328,705,258,785,638,375,532,548,372,512};        
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 4:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,506,567,330,711,262,798,636,369,532,557,372,512};          
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 5:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,493,579,332,715,265,806,634,365,529,566,372,512};        
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 6:{
+          uint16_t gp[20]={235,788,279,235,788,279,744,462,485,587,331,715,264,806,635,365,525,573,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 7:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,482,590,330,710,262,795,636,370,519,577,372,512};          
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 8:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,485,587,328,700,258,776,638,380,511,578,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 9:{
+         uint16_t gp[20]={235,788,279,744,462,561,358,666,489,581,326,690,254,756,640,390,503,576,372,512};
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 10:{
+         uint16_t gp[20]={235,788,279,744,462,561,358,666,491,573,325,684,251,743,641,396,495,572,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 11:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,487,566,324,686,250,747,642,394,487,566,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 12:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,479,559,325,692,251,759,641,388,479,559,372,512};           
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 13:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,472,551,327,440,256,767,639,384,472,551,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 14:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,464,544,331,698,264,772,635,382,464,544,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 15:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,457,536,337,699,276,773,629,381,457,536,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 16:{
+         uint16_t gp[20]={235,788,279,744,462,561,358,666,450,532,339,698,280,772,627,382,451,528,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 17:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,442,534,333,697,267,769,633,383,447,520,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 18:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,436,538,323,695,247,765,643,385,445,512,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 19:{
+         uint16_t gp[20]={235,788,279,744,462,561,358,666,433,541,313,693,228,761,653,387,446,504,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 20:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,436,538,308,692,217,759,658,388,450,498,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 21:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,444,530,308,691,217,758,658,389,457,494,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 22:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,456,517,312,693,225,761,654,387,466,491,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 23:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,470,505,318,695,238,765,648,385,475,491,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 24:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,483,498,323,698,248,772,643,382,484,494,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 25:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,492,500,323,701,248,778,643,379,492,500,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 26:{
+         uint16_t gp[20]={235,788,279,744,462,561,358,666,499,508,321,703,243,782,645,377,499,508,372,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+        case 27:{
+          uint16_t gp[20]={235,788,279,744,462,561,358,666,507,516,319,704,240,783,647,376,507,516,512};         
+          for(uint8_t i=0; i<20; i++){
+            if(i==10 )
+              dxl.position.push_back(gp[i]-robot_y);
+            else if(i==11)
+              dxl.position.push_back(gp[i]+robot_y);
+            else
+              dxl.position.push_back(gp[i]);
+          }
+          break;
+        }
+    
+
+      }
+      break;
+    }
+
+    
+
   }
   move_dxl.request.jointstate=dxl;
   stat=move_dxl_client_.call(move_dxl);
@@ -1495,6 +2187,34 @@ void ElpistarMotionController::walk(int step){
   }
 }
 
+void ElpistarMotionController::shift_r(int step){
+  uint8_t phase=28;
+  ros::Rate loop_rate(28);
+  ros::Rate step_time(2);
+  for(int count=0; count<step; count++){
+    for(int i=0; i<phase; i++){
+      motion(SHIFT_R,i);
+      ros::spinOnce();
+      loop_rate.sleep();
+    }
+    step_time.sleep();
+  }
+}
+
+
+void ElpistarMotionController::shift_l(int step){
+  uint8_t phase=28;
+  ros::Rate loop_rate(28);
+  ros::Rate step_time(2);
+  for(int count=0; count<step; count++){
+    for(int i=0; i<phase; i++){
+      motion(SHIFT_L,i);
+      ros::spinOnce();
+      loop_rate.sleep();
+    }
+    step_time.sleep();
+  }
+}
 void ElpistarMotionController::spin_r(int step){
   uint8_t phase=28;
   ros::Rate loop_rate(28);
