@@ -33,6 +33,8 @@ typedef struct PID{
    bool en;
    bool walk_r;
 };
+bool debug_mode;
+
 class ElpistarMotionController{
  private:
  
@@ -52,7 +54,7 @@ class ElpistarMotionController{
   //Elpistar Motion Controller Parameter
   int robot_y;
   std::string robot_name_;
-
+  int prev_state;
   public:
    ElpistarMotionController();
    ~ElpistarMotionController();

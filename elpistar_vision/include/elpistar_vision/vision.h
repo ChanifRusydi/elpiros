@@ -18,7 +18,7 @@ class ElpistarVisionController{
       ros::NodeHandle nh;
       image_transport::ImageTransport it;     
       image_transport::Publisher image_pub;
-      int8_t state;
+      int state;
       std::string robot_name_;
       cv::VideoCapture cap;
 

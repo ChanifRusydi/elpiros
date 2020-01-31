@@ -18,6 +18,7 @@ ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
 {
   robot_name_   = node_handle_.param<std::string>("robot_name", "elpistar");
   robot_y = priv_node_handle_.param<float>("robot_y",0);
+  debug_mode= priv_node_handle_.param<bool>("debug_mode",false);  
   phi_ctrl.SP= priv_node_handle_.param<int32_t>("phi_SP",-1.5);
   phi_ctrl.Kp= priv_node_handle_.param<float>("phi_Kp",0);
   phi_ctrl.Ki= priv_node_handle_.param<float>("phi_Ki",0);
@@ -37,11 +38,32 @@ ElpistarMotionController::~ElpistarMotionController(){
   ros::shutdown();
 }
 void ElpistarMotionController::robotControl(){
-  ros::Rate transition(0.2);
-  walk_ready();
+  ros::Rate transition(0.5);
+  int r_state=0;
+  if(prev_state == 1)
+    motion(SPIN_R,27);
+  else if(prev_state ==2)
+    motion(WALK,27);
+  else if(prev_state == 3)
+    motion(SPIN_L,27);
   transition.sleep();
   if(camera_client_.call(camera_state_)){
-    ROS_INFO("%s",camera_state_.response.message);
+    r_state=std::atoi(camera_state_.response.message.c_str());
+    switch(r_state){
+      case 1:{
+        spin_r(1);
+        break;
+      }
+      case 2:{
+        walk(5);
+        break;
+      }
+      case 3:{
+        spin_l(1);
+        break;
+      }
+    }
+    prev_state=r_state;
   }
 }
 // void ElpistarMotionController::initPublisher(){
@@ -2513,22 +2535,27 @@ int main(int argc, char **argv)
 {
   // Init ROS node
   ros::init(argc, argv, "elpistar_dynamixel_controller");
-  ElpistarMotionController motion_controller;
-  
+  ElpistarMotionController motion_controller;  
 
   ros::Rate loop(5);
+  ros::Rate trans(0.2);
   //ros::spin();
   // ros::shutdown();
+  motion_controller.walk_ready();
+  trans.sleep();
+
   while (ros::ok())
   {
-    motion_controller.robotControl();
+    if(!debug_mode){
+      motion_controller.robotControl();
     // motion_controller.walk_ready();
     
 //    motion_controller.walk(30);
 //    motion_controller.spin_r(3);  
     // motion_controller.front_standup();
-    ros::spinOnce();
-    loop.sleep();
+      ros::spinOnce();
+      trans.sleep();
+    }
   }
 
   return 0;

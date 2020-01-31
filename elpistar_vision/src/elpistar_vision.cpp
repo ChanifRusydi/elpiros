@@ -6,7 +6,7 @@ ElpistarVisionController::ElpistarVisionController():nh(""),it(nh){
 	line_state_server_  = nh.advertiseService(robot_name_+"/line", &ElpistarVisionController::line_state, this);
 	image_pub = it.advertise(robot_name_+"/image_raw",1);
 	state=0;
-	cap=cv::VideoCapture(2);	
+	cap=cv::VideoCapture(0);	
 	cap.set(3, 160.0);
 	cap.set(4, 120.0);
 	cap.set(cv::CAP_PROP_FOURCC, CV_FOURCC('M', 'J', 'P', 'G'));
@@ -50,7 +50,7 @@ void ElpistarVisionController::update_vision()
 
 		cvtColor(crop, gray, cv::COLOR_BGR2GRAY);
 		GaussianBlur(gray, blur, cv::Size(5, 5), 0);
-		threshold(blur, th, 127, 255, cv::THRESH_BINARY);
+		threshold(blur, th, 137, 255, cv::THRESH_BINARY);
 		findContours(th, contours, hierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
 		cv::drawContours(crop, contours, -1, color, 3);
 
