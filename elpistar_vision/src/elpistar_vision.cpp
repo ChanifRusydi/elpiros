@@ -1,10 +1,18 @@
 #include <elpistar_vision/vision.h>
 
 
+void param_callback(elpistar_vision::VisionConfig &config, uint32_t level) {
+  ROS_INFO("Reconfigure Request: %d ", 
+            config.image_thresh);
+  vision_thresh=config.image_thresh;
+
+}
+
 ElpistarVisionController::ElpistarVisionController():nh(""),it(nh){
 	robot_name_   = nh.param<std::string>("robot_name", "elpistar");
 	line_state_server_  = nh.advertiseService(robot_name_+"/line", &ElpistarVisionController::line_state, this);
 	image_pub = it.advertise(robot_name_+"/image_raw",1);
+  vision_thresh=137;
 	state=0;
 	cap=cv::VideoCapture(0);	
 	cap.set(3, 160.0);
@@ -50,7 +58,7 @@ void ElpistarVisionController::update_vision()
 
 		cvtColor(crop, gray, cv::COLOR_BGR2GRAY);
 		GaussianBlur(gray, blur, cv::Size(5, 5), 0);
-		threshold(blur, th, 137, 255, cv::THRESH_BINARY);
+		threshold(blur, th, vision_thresh, 255, cv::THRESH_BINARY);
 		findContours(th, contours, hierarchy, cv::RETR_TREE, cv::CHAIN_APPROX_NONE);
 		cv::drawContours(crop, contours, -1, color, 3);
 
@@ -108,6 +116,10 @@ int main(int argc, char* argv[])
 	ros::init(argc, argv,"elpistar_line_server");
 	ElpistarVisionController vision_server;
 	ros::Rate refresh_rate(30);
+	dynamic_reconfigure::Server<elpistar_vision::VisionConfig> srv;
+  	dynamic_reconfigure::Server<elpistar_vision::VisionConfig>::CallbackType f;
+  	f = boost::bind(&param_callback, _1, _2);
+  	srv.setCallback(f);
 
 	while(ros::ok()){
 		vision_server.update_vision();

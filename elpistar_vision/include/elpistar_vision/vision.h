@@ -11,6 +11,10 @@
 #include <cv_bridge/cv_bridge.h>
 #include <std_msgs/Int8.h>
 #include <std_srvs/Trigger.h>
+#include <dynamic_reconfigure/server.h>
+#include <elpistar_vision/VisionConfig.h>
+
+int vision_thresh;
 
 class ElpistarVisionController{
     private:

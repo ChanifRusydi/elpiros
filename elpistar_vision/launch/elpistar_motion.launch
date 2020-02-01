@@ -1,6 +1,0 @@
-<launch>
-  <arg name="use_robot_name"         default="elpistar"/>
-  <param name="robot_name"           value="$(arg use_robot_name)"/>
-    
-  <node pkg="elpistar_vision" type="elpistar_vision" name="elpistar_vision_controller" required="true" output="screen"/>     
-</launch>
