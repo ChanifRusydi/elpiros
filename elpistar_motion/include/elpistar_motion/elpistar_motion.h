@@ -55,6 +55,7 @@ class ElpistarMotionController{
   int robot_y;
   std::string robot_name_;
   int prev_state;
+  int fall_state;
   public:
    ElpistarMotionController();
    ~ElpistarMotionController();
