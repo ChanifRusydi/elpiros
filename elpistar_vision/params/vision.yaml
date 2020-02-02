@@ -7,7 +7,7 @@ dictitems:
       groups: !!python/object/new:dynamic_reconfigure.encoding.Config
         state: []
       id: 0
-      image_thresh: 187
+      image_thresh: 220
       name: Default
       parameters: !!python/object/new:dynamic_reconfigure.encoding.Config
         state: []
@@ -15,5 +15,5 @@ dictitems:
       state: true
       type: ''
     state: []
-  image_thresh: 187
+  image_thresh: 220
 state: []
