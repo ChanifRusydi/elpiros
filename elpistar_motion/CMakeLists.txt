@@ -150,6 +150,7 @@ add_executable(${PROJECT_NAME}_ctrl src/elpistar_motion_ctrl.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_ctrl
   ${catkin_LIBRARIES}
+  bcm2835
 )
 
 #############

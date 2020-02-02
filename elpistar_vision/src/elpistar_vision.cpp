@@ -12,9 +12,16 @@ ElpistarVisionController::ElpistarVisionController():nh(""),it(nh){
 	robot_name_   = nh.param<std::string>("robot_name", "elpistar");
 	line_state_server_  = nh.advertiseService(robot_name_+"/line", &ElpistarVisionController::line_state, this);
 	image_pub = it.advertise(robot_name_+"/image_raw",1);
-  vision_thresh=137;
+        vision_thresh=137;
 	state=0;
-	cap=cv::VideoCapture(0);	
+        int deviceID = 0;             // 0 = open default camera
+        int apiID = cv::CAP_ANY;      // 0 = autodetect default API
+        cap.open(deviceID+apiID);	
+	if (!cap.isOpened()) {
+          std::cerr << "ERROR! Unable to open camera\n";
+          ros::shutdown();
+        }
+
 	cap.set(3, 160.0);
 	cap.set(4, 120.0);
 	cap.set(cv::CAP_PROP_FOURCC, CV_FOURCC('M', 'J', 'P', 'G'));
@@ -120,6 +127,7 @@ int main(int argc, char* argv[])
   	dynamic_reconfigure::Server<elpistar_vision::VisionConfig>::CallbackType f;
   	f = boost::bind(&param_callback, _1, _2);
   	srv.setCallback(f);
+
 
 	while(ros::ok()){
 		vision_server.update_vision();

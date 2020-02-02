@@ -9,7 +9,7 @@
 #include <sensor_msgs/JointState.h>
 #include <elpistar_imu/EulerIMU.h>
 #include <elpistar_msgs/DXLServer.h>
-
+#include <bcm2835.h>
 
 #define WALK_FREQUENCY (15)
 #define WALK 0
@@ -23,8 +23,8 @@
 #define FRONT_STANDUP_OLD 8
 #define SIT 9
 #define SIT_OLD 10
-//#define BACK_STANDUP_OLD 9
-
+#define BACK_STANDUP_OLD 11
+#define START_BUTTON RPI_BPLUS_GPIO_J8_40
 typedef struct PID{
    float Kp,Ki,Kd,Ts;
    float P,I,D;
@@ -34,7 +34,7 @@ typedef struct PID{
    bool walk_r;
 };
 bool debug_mode;
-
+bool start=false;
 class ElpistarMotionController{
  private:
  
@@ -72,6 +72,7 @@ class ElpistarMotionController{
    
    void sit();
    void sit_old();
+   void back_standup_old();
    void euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg);   
   private:
    void initPublisher();

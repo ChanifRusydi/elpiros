@@ -1,5 +1,3 @@
-
-<!-- http://wiki.ros.org/roslaunch/XML/node -->
 <launch>
    <arg name="debug_en"		default="false"/>
    <node name="elpistar_imu" pkg="elpistar_imu" type="elpistar_imu" output="screen">
