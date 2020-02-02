@@ -3,6 +3,7 @@
 
 #include <ros/ros.h>
 
+#include <iostream>
 #include <string>
 #include <vector>
 #include <std_srvs/Trigger.h>

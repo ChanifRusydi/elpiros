@@ -92,19 +92,19 @@ void ElpistarVisionController::update_vision()
 			cv::drawContours(crop, contours, -1,cv::Scalar(0,255,0));
 			if (cx >= 120) {
 				// res.message = "Kiri";
-				ROS_INFO("Kiri");
+//				ROS_INFO("Kiri");
 				state=1;
 			}
 
 			else if (cx < 120  && cx > 50) {
 				// res.message = "Tengah";
-				ROS_INFO("Tengah");
+//				ROS_INFO("Tengah");
 				state=2;
 			}
 
 			else if(cx <= 50) {
 				// res.message = "Kanan";
-				ROS_INFO("Kanan");
+//				ROS_INFO("Kanan");
 				state=3;
 			}
 			

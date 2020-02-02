@@ -395,7 +395,7 @@ int main(int argc, char **argv){
     usleep(100000);
 
     imu_pub = n.advertise<sensor_msgs::Imu>("/imu/data", 10);
-    imu_euler_pub = n.advertise<elpistar_imu::EulerIMU>("/imu/euler", 10);
+    imu_euler_pub = n.advertise<elpistar_imu::EulerIMU>("/imu/euler", 1);
     mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/mag", 10);
 
     ros::Rate r(sample_rate);

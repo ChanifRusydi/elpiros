@@ -1,3 +1,4 @@
+
 #include <elpistar_motion/elpistar_motion.h>
 
 int mapd(int x, int min, int max)
@@ -26,7 +27,7 @@ ElpistarMotionController::ElpistarMotionController() :node_handle_(""),
   phi_ctrl.Ts= priv_node_handle_.param<float>("phi_Ts",0.2);
   phi_ctrl.en= false;
   fall_state=0;
-  printf("%.2f, %.2f, %.2f, %.2f",phi_ctrl.Kp, phi_ctrl.Ki, phi_ctrl.Kd, phi_ctrl.SP);
+  std::cout<<phi_ctrl.Kp<<" "<<  phi_ctrl.Ki <<" "<<  phi_ctrl.Kd <<" "<< phi_ctrl.SP;
   // ros::shutdown();
   // initPublisher();
   initSubscriber();
@@ -49,6 +50,7 @@ void ElpistarMotionController::robotControl(){
   transition.sleep();
   if(fall_state==1){
     front_standup();
+    ros::Duration(0.2).sleep();
     fall_state=0;
   }
   else{
@@ -56,14 +58,20 @@ void ElpistarMotionController::robotControl(){
       r_state=std::atoi(camera_state_.response.message.c_str());
       switch(r_state){
         case 1:{
+          walk_ready();
+          ros::Duration(0.1).sleep();
           spin_r(1);
           break;
         }
         case 2:{
-          walk(5);
+	  walk_ready();
+          ros::Duration(0.1).sleep();
+          walk(10);
           break;
         }
         case 3:{
+ 	  walk_ready();
+          ros::Duration(0.1).sleep();
           spin_l(1);
           break;
         }
@@ -81,7 +89,7 @@ void ElpistarMotionController::initClient(){
 }
 
 void ElpistarMotionController::initSubscriber(){
-  position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",10, &ElpistarMotionController::euler_pos_cb, this);
+  position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",1, &ElpistarMotionController::euler_pos_cb, this);
 }
 void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
@@ -97,7 +105,7 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
     uint16_t goal[20]={175,728,279,744,462,561,358,666,507,516,292,674,248,775,614,352,507,516,372,512}; //walk
     for(int i=0; i<20; i++) gp[i]=goal[i];
   }
-  if(msg->phi < -25){
+  if(msg->phi < (-30)){
     fall_state=1;
   }
   else{
@@ -137,7 +145,7 @@ void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstP
         refresh.sleep();
         stat=move_dxl_client_.call(move_dxl);
       }*/
-      printf("Kontrol Aktif");
+      std::cout<<"Kontrol Aktif";
       phi_ctrl.en=false;
       phi_ctrl.walk_r=false;
     }
@@ -2608,6 +2616,7 @@ void ElpistarMotionController::walk(int step){
       loop_rate.sleep();
     }
     step_time.sleep();
+    if(fall_state==1) break;
   }
 }
 
@@ -2675,13 +2684,13 @@ void ElpistarMotionController::walk_ready(){
 void ElpistarMotionController::front_standup(){
   uint8_t phase=9;
   ros::Rate loop_rate(2.5);
-  ros::Rate delay(0.35);
+  ros::Rate trans(0.35);
   for(int i=0; i<phase; i++){
     motion(FRONT_STANDUP_OLD,i);
     ros::spinOnce();
     loop_rate.sleep();
     if( i>=2)
-     if(i<8) delay.sleep();
+     if(i<8) trans.sleep();
   }
 }
 
@@ -2738,10 +2747,10 @@ int main(int argc, char **argv)
     }
     if(!debug_mode){
       motion_controller.robotControl();
-      ros::spinOnce();
-      loop.sleep();
     }
-    else{}
+    else{
+      motion_controller.walk(20);
+    }
   }
 
   return 0;
