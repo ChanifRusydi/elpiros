@@ -262,7 +262,7 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
 		tf::Quaternion quaternion_tf(q.x, q.y, q.z, q.w);
 		rviz_tf.setRotation(quaternion_tf);
 		tf_br.sendTransform(tf::StampedTransform(rviz_tf, now, "imu_base", "imu_link"));
-		imu_pub.publish(imu_msg);
+		//imu_pub.publish(imu_msg);
 //            mag_msg.vector.x=mpu.calibratedMag[VEC3_X];
 //            mag_msg.vector.y=mpu.calibratedMag[VEC3_Y];
 //            mag_msg.vector.z=mpu.calibratedMag[VEC3_Z];
