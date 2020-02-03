@@ -15,7 +15,7 @@
 #include <geometry_msgs/Vector3Stamped.h>
 #include <tf/transform_datatypes.h>
 #include <tf/transform_broadcaster.h>
-#include <elpistar_imu/EulerIMU.h>
+#include <elpistar_msgs/EulerIMU.h>
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
 
@@ -143,7 +143,7 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
    // imu_euler_msg.header.stamp = now;
    // imu_euler_msg.header.frame_id = frame_id;
 
-    elpistar_imu::EulerIMU imu_euler_msg;
+    elpistar_msgs::EulerIMU imu_euler_msg;
 
     geometry_msgs::Vector3Stamped mag_msg;
     mag_msg.header.stamp = now;
@@ -395,7 +395,7 @@ int main(int argc, char **argv){
     usleep(100000);
 
     imu_pub = n.advertise<sensor_msgs::Imu>("/imu/data", 10);
-    imu_euler_pub = n.advertise<elpistar_imu::EulerIMU>("/imu/euler", 1);
+    imu_euler_pub = n.advertise<elpistar_msgs::EulerIMU>("/imu/euler", 1);
     mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/mag", 10);
 
     ros::Rate r(sample_rate);

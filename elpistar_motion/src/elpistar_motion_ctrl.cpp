@@ -89,9 +89,9 @@ void ElpistarMotionController::initClient(){
 }
 
 void ElpistarMotionController::initSubscriber(){
-  position_sub_ = node_handle_.subscribe<elpistar_imu::EulerIMU>("/imu/euler",1, &ElpistarMotionController::euler_pos_cb, this);
+  position_sub_ = node_handle_.subscribe<elpistar_msgs::EulerIMU>("/imu/euler",1, &ElpistarMotionController::euler_pos_cb, this);
 }
-void ElpistarMotionController::euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg){
+void ElpistarMotionController::euler_pos_cb(const elpistar_msgs::EulerIMU::ConstPtr &msg){
   sensor_msgs::JointState dxl;
   elpistar_msgs::DXLServer move_dxl;
   ros::Rate refresh(10);

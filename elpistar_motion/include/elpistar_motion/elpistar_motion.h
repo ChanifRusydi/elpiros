@@ -51,6 +51,7 @@ class ElpistarMotionController{
   ros::ServiceClient move_dxl_client_;
   ros::ServiceClient camera_client_;
   std_srvs::Trigger camera_state_;
+  elpistar_msgs::IMUServer imu_state_;
 
   //Elpistar Motion Controller Parameter
   int robot_y;
@@ -75,7 +76,7 @@ class ElpistarMotionController{
    void sit();
    void sit_old();
    void back_standup_old();
-   void euler_pos_cb(const elpistar_imu::EulerIMU::ConstPtr &msg);   
+   void euler_pos_cb(const elpistar_msgs::EulerIMU::ConstPtr &msg);   
   private:
    void initPublisher();
    void initSubscriber();
