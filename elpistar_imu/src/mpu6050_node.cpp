@@ -15,6 +15,7 @@
 #include <geometry_msgs/Vector3Stamped.h>
 #include <tf/transform_datatypes.h>
 #include <tf/transform_broadcaster.h>
+#include <elpistar_msgs/IMUServer.h>
 #include <elpistar_msgs/EulerIMU.h>
 #include "I2Cdev.h"
 #include "MPU6050_6Axis_MotionApps20.h"
@@ -31,9 +32,9 @@
 //#include "AccelGyroSensorOffsets.h"
 
 ros::Publisher imu_calib_pub;
-
+elpistar_msgs::EulerIMU imu_euler_msg;
 ros::ServiceClient * clientptr;
-
+ros::ServiceServer imu_state_server;
 // class default I2C address is 0x68
 // specific I2C addresses may be passed as a parameter here
 // AD0 low = 0x68 (default for SparkFun breakout and InvenSense evaluation board)
@@ -113,7 +114,12 @@ ros::Publisher imu_pub;
 ros::Publisher imu_euler_pub;
 ros::Publisher mag_pub;
 
+bool imuUpdate(elpistar_msgs::IMUServer::Request &req,
+               elpistar_msgs::IMUServer::Response &res){
+  res.euler=imu_euler_msg;
+  return true;
 
+}
 void mySigintHandler(int sig){
 	ROS_INFO("Shutting down mpu6050_node...");
 
@@ -143,7 +149,7 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
    // imu_euler_msg.header.stamp = now;
    // imu_euler_msg.header.frame_id = frame_id;
 
-    elpistar_msgs::EulerIMU imu_euler_msg;
+    
 
     geometry_msgs::Vector3Stamped mag_msg;
     mag_msg.header.stamp = now;
@@ -212,7 +218,7 @@ void loop(ros::NodeHandle pn, ros::NodeHandle n) {
 	    imu_euler_msg.psi=euler[0]*180/M_PI;
 	    imu_euler_msg.theta=euler[1]*180/M_PI;
 	    imu_euler_msg.phi=euler[2]*180/M_PI;
-	    imu_euler_pub.publish(imu_euler_msg);
+	    // imu_euler_pub.publish(imu_euler_msg);
             if(debug) printf("euler %7.2f %7.2f %7.2f    ", euler[0] * 180/M_PI, euler[1] * 180/M_PI, euler[2] * 180/M_PI);
         #endif
 
@@ -394,10 +400,10 @@ int main(int argc, char **argv){
 
     usleep(100000);
 
-    imu_pub = n.advertise<sensor_msgs::Imu>("/imu/data", 10);
-    imu_euler_pub = n.advertise<elpistar_msgs::EulerIMU>("/imu/euler", 1);
-    mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/mag", 10);
-
+    // imu_pub = n.advertise<sensor_msgs::Imu>("/imu/data", 10);
+    // imu_euler_pub = n.advertise<elpistar_msgs::EulerIMU>("/imu/euler", 1);
+    // mag_pub = n.advertise<geometry_msgs::Vector3Stamped>("/imu/mag", 10);
+    imu_state_server=n.advertiseService("elpistar/imu",imuUpdate);
     ros::Rate r(sample_rate);
     while(ros::ok()){
         loop(pn, n);

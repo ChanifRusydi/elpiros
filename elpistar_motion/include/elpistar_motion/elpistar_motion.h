@@ -8,8 +8,9 @@
 #include <vector>
 #include <std_srvs/Trigger.h>
 #include <sensor_msgs/JointState.h>
-#include <elpistar_imu/EulerIMU.h>
+#include <elpistar_msgs/EulerIMU.h>
 #include <elpistar_msgs/DXLServer.h>
+#include <elpistar_msgs/IMUServer.h>
 #include <bcm2835.h>
 
 #define WALK_FREQUENCY (15)
@@ -50,9 +51,9 @@ class ElpistarMotionController{
   //ROS Service Client
   ros::ServiceClient move_dxl_client_;
   ros::ServiceClient camera_client_;
+  ros::ServiceClient imu_client_;
   std_srvs::Trigger camera_state_;
   elpistar_msgs::IMUServer imu_state_;
-
   //Elpistar Motion Controller Parameter
   int robot_y;
   std::string robot_name_;
