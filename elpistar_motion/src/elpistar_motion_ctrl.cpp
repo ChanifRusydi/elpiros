@@ -2628,7 +2628,7 @@ void ElpistarMotionController::walk(int step){
     }
     else
       position_control(1);
-      ros::Duration(0.3).sleep();
+      ros::Duration(0.1).sleep();
   }
 }
 
