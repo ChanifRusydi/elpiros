@@ -36,7 +36,9 @@ Stop the robot service:
     sudo systemctl stop elpistar
 ```
 launch all package in separate terminal, elpistar_motion and elpistar_imu in root (sudo su then source.bashrc)
-launch elpistar_motion with debug:=true
-launch elpistar_imu with debug_en:=true
-read the euler[3] value in elpistar_imu
-edit elpistar_motion.launch file
+```
+  launch elpistar_motion with debug:=true
+  launch elpistar_imu with debug_en:=true
+  read the euler[3] value in elpistar_imu
+  edit elpistar_motion.launch file
+```
