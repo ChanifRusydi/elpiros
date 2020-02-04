@@ -77,6 +77,7 @@ class ElpistarMotionController{
    void sit();
    void sit_old();
    void back_standup_old();
+   void debug();
   private:
    void initPublisher();
    void initSubscriber();

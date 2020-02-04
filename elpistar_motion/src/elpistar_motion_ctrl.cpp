@@ -2631,6 +2631,10 @@ void ElpistarMotionController::walk(int step){
       ros::Duration(0.1).sleep();
   }
 }
+void ElpistarMotionController::debug(){
+  motion(WALK,27);
+  ros::spinOnce();
+}
 
 void ElpistarMotionController::shift_r(int step){
   uint8_t phase=28;
@@ -2764,7 +2768,7 @@ int main(int argc, char **argv)
       motion_controller.robotControl();
     }
     else{
-      motion_controller.walk(20);
+      motion_controller.debug();
     }
   }
 
