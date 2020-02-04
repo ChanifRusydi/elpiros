@@ -42,7 +42,7 @@ set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_C_FLAGS}")
 #   EulerIMU.msg
 #   Message1.msg
 #   Message2.msg
-)
+#)
 
 ## Generate services in the 'srv' folder
 #add_service_files(
