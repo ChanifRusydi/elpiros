@@ -20,13 +20,13 @@ Open rqt_reconfigure and rqt_image_view in your PC:
     rqt_image_view
 ```
 Set the threshold in rqt_reconfigure, then save the value with update_vision script:
-    ```
+```
     ./update_vision.sh
-    ```
+```
 stop the tuner:
-    ```
+```
     sudo systemctl stop elpistar_tuner
-    ```
+```
 reboot the robot
 
 PID Tuning
