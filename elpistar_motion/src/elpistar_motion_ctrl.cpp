@@ -2678,12 +2678,12 @@ void ElpistarMotionController::spin_r(int step){
       ros::spinOnce();
       loop_rate.sleep();
     }
+    step_time.sleep();
     imu_client_.call(imu_state_);
     if(imu_state_.response.euler.phi< -30){
       fall_state=1;
       break;
     }
-    step_time.sleep();
     else
       position_control(0);
       ros::Duration(0.1).sleep();
@@ -2701,12 +2701,12 @@ void ElpistarMotionController::spin_l(int step){
       ros::spinOnce();
       loop_rate.sleep();
     }
+    step_time.sleep();
     imu_client_.call(imu_state_);
     if(imu_state_.response.euler.phi< -30){
       fall_state=1;
       break;
     }
-    step_time.sleep();
     else
       position_control(0);
       ros::Duration(0.1).sleep();
