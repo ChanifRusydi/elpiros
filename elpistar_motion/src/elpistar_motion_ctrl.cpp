@@ -2684,7 +2684,7 @@ void ElpistarMotionController::spin_r(int step){
       fall_state=1;
       break;
     }
-    else
+    else{
       position_control(0);
       ros::Duration(0.1).sleep();
     }
@@ -2707,7 +2707,7 @@ void ElpistarMotionController::spin_l(int step){
       fall_state=1;
       break;
     }
-    else
+    else{
       position_control(0);
       ros::Duration(0.1).sleep();
     }
