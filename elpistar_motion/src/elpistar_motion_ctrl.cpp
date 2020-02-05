@@ -115,6 +115,7 @@ void ElpistarMotionController::robotControl(){
   if(fall_state==1){
     front_standup();
     ros::Duration(0.5).sleep();
+    imu_client_.call(imu_state_);
     walk_ready();
     ros::Duration(0.2).sleep();
     fall_state=0;
